@@ -1,82 +1,11 @@
-console.log('Ejecutando el Bot mas shidori tercer mundista.\nComenzando ejecucion del script...');
-
-import { join, dirname } from 'path'
-import { createRequire } from 'module'
-import { fileURLToPath } from 'url'
-import { setupMaster, fork } from 'cluster'
-import { watchFile, unwatchFile } from 'fs'
-import cfonts from 'cfonts';
-import { createInterface } from 'readline'
-import Helper from './lib/helper.js'
-import chalk from 'chalk'
-
-// https://stackoverflow.com/a/50052194
-const __dirname = dirname(fileURLToPath(import.meta.url))
-const require = createRequire(__dirname) // Bring in the ability to create the 'require' method
-const { name, author } = require(join(__dirname, './package.json')) // https://www.stefanjudis.com/snippets/how-to-import-json-files-in-es-modules-node-js/
-const { say } = cfonts
-const rl = createInterface(process.stdin, process.stdout)
-
-say(`${name}|MD`, {
-  font: 'pallet',
-    color: 'candy',
-    align: 'center',
-    gradient: ["red","blue"]
-})
-
-say((`UwU`), {
-    font: 'simple3d',
-    color: 'candy',
-    align: 'center',
-    gradient: ["red","magenta"],
-    lineHeight: 3
-  })
-
-var isRunning = false
 /**
- * Start a js file
- * @param {String} file `path/to/file`
- */
-function start(file) {
-  if (isRunning) return
-  isRunning = true
-  let args = [join(__dirname, file), ...process.argv.slice(2)]
-  ///say([process.argv[0],...args].join(' '),{font:'console',align:'center',gradient:['red','magenta']})
-  setupMaster({
-    exec: args[0],
-    args: args.slice(1),
-  })
-  let p = fork()
-  p.on('message', data => {
-    console.log('\n[_>] ', data+'\n')
-    switch (data) {
-      case 'reset':
-        p.process.kill()
-        isRunning = false
-        start.apply(this, arguments)
-        break
-      case 'uptime':
-        p.send(process.uptime())
-        break
-    }
-  })
-  p.on('exit', (_, code) => {
-    isRunning = false
-    console.error(chalk.bgRed('\n\n[!] Salió del código : '), chalk.bgWhite(code+'\n'))
-    p.process.kill() 
-    isRunning = false
-    start.apply(this, arguments)
-    if (code === 0) return
-    watchFile(args[0], () => {
-      unwatchFile(args[0])
-      start(file)
-    })
-  })
-  if (!Helper.opts['test'])
-    if (!rl.listenerCount()) rl.on('line', line => {
-      p.emit('message', line.trim())
-    })
-  // console.log(p)
-}
+</> Original base BochilGaming 
+</> Recode simple by @NeKosmic
+**/
 
-start('main.js')
+console.log("Ejecutando el Bot mas shidori tercer mundista.\nComenzando ejecucion del script...");import{join as e,dirname as r}from"path";import{createRequire as i}from"module";import{fileURLToPath as t}from"url";import{setupMaster as n,fork as o}from"cluster";import{watchFile as s,unwatchFile as a}from"fs";import l from"cfonts";import{createInterface as m}from"readline";import c from"./lib/helper.js";import p from"chalk";let __dirname=r(t(import.meta.url)),require=i(__dirname),{name:d,author:g}=require(e(__dirname,"./package.json")),{say:u}=l,rl=m(process.stdin,process.stdout);u(`${d}|MD`,{font:"pallet",color:"candy",align:"center",gradient:["red","blue"]}),u("UwU",{font:"simple3d",color:"candy",align:"center",gradient:["red","magenta"],lineHeight:3});var isRunning=!1;function start(r){if(isRunning)return;isRunning=!0;let i=[e(__dirname,r),...process.argv.slice(2)];n({exec:i[0],args:i.slice(1)});let t=o();t.on("message",e=>{switch(console.log("\n[_>] ",e+"\n"),e){case"reset":t.process.kill(),isRunning=!1,start.apply(this,arguments);break;case"uptime":t.send(process.uptime())}}),t.on("exit",(e,n)=>{isRunning=!1,console.error(p.bgRed("\n\n[!] Sali\xf3 del c\xf3digo : "),p.bgWhite(n+"\n")),t.process.kill(),isRunning=!1,start.apply(this,arguments),0!==n&&s(i[0],()=>{a(i[0]),start(r)})}),c.opts.test||rl.listenerCount()||rl.on("line",e=>{t.emit("message",e.trim())})}start("main.js");
+
+/**
+[_>] https://github.com/NeKosmic/
+[_>] https://gitlab.com/NeKosmic/
+**/
