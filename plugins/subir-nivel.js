@@ -3,19 +3,19 @@
 </> Recode simple by @NeKosmic
 **/
 
-import e from"../lib/database.js";import{xpRange as a}from"../lib/levelling.js";let handler=async(i,{conn:n,args:t,command:r})=>{let{exp:l,level:o,role:s,lastclaim:d,registered:m,regTime:u}=e.data.users[i.sender],{min:c,xp:v,max:p}=a(o,global.multiplier),g=l-c,b=g<0?`[ ! ] Su XP actual es menor de 0, usted debe ${0-g} XP para continuar subiendo de nivel...`:`(${g} / ${v})`,h=await n.getName(i.sender),P=await n.profilePictureUrl(i.sender).catch(e=>"./multimedia/imagenes/avatar_contact.png");var w="";o<=2?w="[ - - - - - - - - - - ]":o<=9?w="[# - - - - - - - - - ]":o<=19?w="[## - - - - - - - - ]":o<=29?w="[### - - - - - - - ]":o<=39?w="[#### - - - - - - ]":o<=49?w="[##### - - - - - ]":o<=59?w="[###### - - - - ]":o<=69?w="[####### - - - ]":o<=79?w="[######## - - ]":o<=89?w="[######### - ]":o<=99&&(w="[##########]");let S=`
-┏━━❉ *[ Nivel ]* ❉━━━
-┣⊱ *Usuario* : ${m?"("+h+") ":""} ( @${i.sender.split("@")[0]} )
-┣⊱ *Registrado* : ${m?"S\xed ("+new Date(u).toLocaleString()+")":"No"} ${d>0?"\n┣⊱ *\xdaltimo reclamo :* "+new Date(d).toLocaleString():""}
-┣⊱ *Nombre* : <${h}>
-┣⊱ *XP conseguido asta el momento* : ${b}
-┣⊱ *Su nivel actual es* : ${o} ${v<l-c?`<Ya puedes subir de nivel, use el comando ${Prefijo}subirnivel >`:""}
-┣⊱ *De acuerdo al nivel es* : ${s}
-┣⊱ *Progreso de nivel* : ${w}
-┗━━━━━━━━━━━━━
+import{canLevelUp as e,xpRange as l}from"../lib/levelling.js";import{levelup as a}from"../lib/canvas.js";import r from"../lib/database.js";let handler=async(i,{conn:t})=>{let v=r.data.users[i.sender];var n="";if(v.level<=2?n="[ - - - - - - - - - - ]":v.level<=9?n="[# - - - - - - - - - ]":v.level<=19?n="[## - - - - - - - - ]":v.level<=29?n="[### - - - - - - - ]":v.level<=39?n="[#### - - - - - - ]":v.level<=49?n="[##### - - - - - ]":v.level<=59?n="[###### - - - - ]":v.level<=69?n="[####### - - - ]":v.level<=79?n="[######## - - ]":v.level<=89?n="[######### - ]":v.level<=99&&(n="[##########]"),!e(v.level,v.exp,global.multiplier)){let{min:s,xp:d,max:o}=l(v.level,global.multiplier),u=v.exp-s,p=u<0?`[ ! ] Su XP actual es menor de 0, usted debe ${0-u} XP para continuar subiendo de nivel...`:`
+🪀 Nivel actual *${v.level} (${v.exp-s}/${d})*
+🔥 Te faltan *${o-v.exp}* de XP para que puedas subir al siguiente nivel
+`;return i.reply(p)}let m=1*v.level;for(;e(v.level,v.exp,global.multiplier);)v.level++;if(m!==v.level){v.role=global.rpg.role(v.level).name;let c=`Felicidades! ${t.getName(i.sender)}
+Acabas de subir de nivel`,b=`\`\`\`${n}\`\`\`
 
-_Use el comando ${Prefijo}inventario para ver tu inventario RPG_
-`.trim();await n.sendMessage(i.chat,{image:{url:P},caption:S,mentions:n.parseMention(S)},{quoted:i})};handler.help=["minivel"],handler.tags=["xp"],handler.command=/^(minivel)$/i;export default handler;
+♻️ *Nivel anterior* : ${m}
+🪀 *Nuevo nivel* : ${v.level}
+⚔️ *Rol del cliente* : ${v.role}
+📆 *Fecha* : ${new Date().toLocaleString("es-ES")}
+
+_Cuanto mas interact\xfaes con el bot, mayor ser\xe1\xa1 tu nivel_
+`.trim();try{let h=await a(c,v.level);t.sendFile(i.chat,h,"levelup.jpg",b,i)}catch(f){i.reply(b)}}};handler.help=["subirnivel"],handler.tags=["xp"],handler.command=/^(subirnivel|levelup)$/i;export default handler;
 
 /**
 [_>] https://github.com/NeKosmic/
