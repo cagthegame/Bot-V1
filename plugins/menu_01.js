@@ -1,8 +1,9 @@
-import * as fs from 'fs'
+/**
+</> Original base BochilGaming 
+</> Recode simple by @NeKosmic
+**/
 
-let handler = async (m, { conn }) => {
-	let uwur = await conn.profilePictureUrl(m.chat, 'image').catch(_ => './multimedia/imagenes/myunivers.jpg')
-await conn.sendMessage(m.chat, { image: {url: uwur}, jpegThumbnail: fs.readFileSync('./multimedia/imagenes/mylogo.jpg'), caption: `
+import*as e from"fs";let handler=async(a,{conn:r})=>{await r.sendMessage(a.chat,{image:{url:await r.profilePictureUrl(a.chat,"image").catch(e=>"./multimedia/imagenes/myunivers.jpg")},jpegThumbnail:e.readFileSync("./multimedia/imagenes/mylogo.jpg"),caption:`
 ╔═══════════
 ╟{ CONVERSORES }
 ║
@@ -87,7 +88,7 @@ await conn.sendMessage(m.chat, { image: {url: uwur}, jpegThumbnail: fs.readFileS
 ║❖ ${Prefijo}minivel
 ║❖ ${Prefijo}subirnivel
 ╠═══════════
-╟{ ADMINISTRACIÓN }
+╟{ ADMINISTRACI\xd3N }
 ║
 ║❖ ${Prefijo}suprimir
 ║❖ ${Prefijo}cgpen
@@ -137,11 +138,9 @@ await conn.sendMessage(m.chat, { image: {url: uwur}, jpegThumbnail: fs.readFileS
 ║❖  =>
 ║❖  $
 ╚═══════════
-`.trim() }, { quoted: m })
-}
+`.trim()},{quoted:a})};handler.help=["menusimple"],handler.command=/^(menusimple)$/i,handler.group=!0;export default handler;
 
-handler.help = ['menusimple']
-handler.command = /^(menusimple)$/i
-handler.group = true
-
-export default handler
+/**
+[_>] https://github.com/NeKosmic/
+[_>] https://gitlab.com/NeKosmic/
+**/
