@@ -3,7 +3,7 @@
 </> Recode simple by @NeKosmic
 **/
 
-import*as e from"fs";let handler=async(a,{conn:r})=>{await r.sendMessage(a.chat,{image:{url:await r.profilePictureUrl(a.chat,"image").catch(e=>"./multimedia/imagenes/myunivers.jpg")},jpegThumbnail:e.readFileSync("./multimedia/imagenes/mylogo.jpg"),caption:`
+import*as e from"fs";let handler=async(a,{conn:r,isAdmin:i,isOwner:t})=>{await r.sendMessage(a.chat,{image:{url:await r.profilePictureUrl(a.chat,"image").catch(e=>"./multimedia/imagenes/myunivers.jpg")},jpegThumbnail:e.readFileSync("./multimedia/imagenes/mylogo.jpg"),caption:`
 ╔═══════════
 ╟{ CONVERSORES }
 ║
@@ -86,7 +86,7 @@ import*as e from"fs";let handler=async(a,{conn:r})=>{await r.sendMessage(a.chat,
 ║
 ║❖ ${Prefijo}ranking
 ║❖ ${Prefijo}minivel
-║❖ ${Prefijo}subirnivel
+║❖ ${Prefijo}subirnivel ${i?`
 ╠═══════════
 ╟{ ADMINISTRACI\xd3N }
 ║
@@ -104,7 +104,7 @@ import*as e from"fs";let handler=async(a,{conn:r})=>{await r.sendMessage(a.chat,
 ║❖ ${Prefijo}gplink
 ║❖ ${Prefijo}encender
 ║❖ ${Prefijo}apagar
-║❖ ${Prefijo}deathnote
+║❖ ${Prefijo}deathnote `:""} ${t?`
 ╠═══════════
 ╟{ PROPIETARIO }
 ║
@@ -136,7 +136,7 @@ import*as e from"fs";let handler=async(a,{conn:r})=>{await r.sendMessage(a.chat,
 ╟{ AVANZADO }
 ║❖  >
 ║❖  =>
-║❖  $
+║❖  $ `:""}
 ╚═══════════
 `.trim()},{quoted:a})};handler.help=["menusimple"],handler.command=/^(menusimple)$/i,handler.group=!0;export default handler;
 
