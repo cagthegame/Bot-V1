@@ -1,6 +1,8 @@
 /**
-[ By @NeKosmic || https://github.com/NeKosmic/ ]
+</> Original base BochilGaming 
+</> Recode simple by @NeKosmic
 **/
+
 import { watchFile, unwatchFile } from 'fs'
 import chalk from 'chalk'
 import { fileURLToPath } from 'url'
@@ -13,18 +15,20 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 const require = createRequire(__dirname)
 const dPkg = require(join(__dirname, './package.json'))
 //
-global.MultiNK = es; //Lenguaje nativo
-global.Propietario = dPkg.author.name
-global.OwnerNum = '51995386439'
-global.PaisPrefix = '51'
-global.Prefijo = '.'
+global.MultiNK = es; //Lenguaje nativo XD 
+global.Propietario = dPkg.author.name //Nombre obtenido de package.json
+global.OwnerNum = '51995386439' //Tu número como dueño del bot •>•
+global.PaisPrefix = '51' //Prefijo telefónico de tu pais 
+global.Prefijo = '.' //Símbolo, número, letra o emoji. para usar los comandos 
 global.MyApiKey = 'nekosmic' //zzz
-global.NombreDelBot = 'NK-BOT' //vMD
-global.BotVersion = dPkg.version
-global.TusRedesSociales = "[ > ] Canal de Youtube:\n- https://youtube.com/channel/UC_Pp8pT9vbT15k5_-i6oseA\n\n[ f ] Página de Facebook:\n- https://fb.watch/b7pj-i5ejP/\n\n[Ꮄ] Tiktok:\n- https://vm.tiktok.com/ZMLjAbySN/\n\nᴺᵒ ᵖᶦᵈᵒ ᵈᶦⁿᵉʳᵒ⁻ ˢᵒˡᵒ ᶜᵒⁿ ᵗᵘ ᵃᵖᵒʸᵒ ˢᵒʸ ᶠᵉˡᶦᶻ  :³"
-global.UsLimitesCmd = '20'
-global.MinimoDeUsuarios = '2'
-global.FakeList = ['20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '60', '61', '62', '63', '64', '65', '66', '67', '68', '69', '7', '80', '81', '82', '83', '84', '85', '86', '87', '88', '89', '90', '91', '92', '93', '94', '95', '96', '97', '98', '99'] //Aqui pueden colocar los números falsos o que no les agrade, seran eliminados automáticamente :v //
+global.NombreDelBot = 'NK-BOT' //Nombre del bot
+global.BotVersion = dPkg.version //Versión obtenido de package.json
+global.TusRedesSociales = "[ > ] Canal de Youtube:\n- https://youtube.com/channel/UC_Pp8pT9vbT15k5_-i6oseA\n\n[ f ] Página de Facebook:\n- https://fb.watch/b7pj-i5ejP/\n\n[Ꮄ] Tiktok:\n- https://vm.tiktok.com/ZMLjAbySN/\n\nᴺᵒ ᵖᶦᵈᵒ ᵈᶦⁿᵉʳᵒ⁻ ˢᵒˡᵒ ᶜᵒⁿ ᵗᵘ ᵃᵖᵒʸᵒ ˢᵒʸ ᶠᵉˡᶦᶻ  :³" //Aqui pueden poner sus redes sociales, etc...
+global.UsLimitesCmd = '20' //límite para usar al bot
+global.MinimoDeUsuarios = '2' //Cantidad mínima de participantes en un grupo para que el bot pueda unirse ._.
+global.FakeList = ['20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '60', '61', '62', '63', '64', '65', '66', '67', '68', '69', '7', '80', '81', '82', '83', '84', '85', '86', '87', '88', '89', '90', '91', '92', '93', '94', '95', '96', '97', '98', '99'] //Aqui pueden colocar los números falsos o que no les agrade, seran eliminados automáticamente al activar el antifakes2 en un grupo :v //
+
+global.multiplier = 1000 //Multiplicador para nivel, si pones un valor alto mayor sera la dificultad para subir de nivel :u
 
 global.owner = [
   [OwnerNum, Propietario, true]
@@ -40,12 +44,35 @@ global.APIKeys = {
   'https://website': 'apikey'
 }
 
-global.multiplier = 1000
-
 global.rpg = {
   emoticon(string) {
     string = string.toLowerCase()
-    let emot={role:"\uD83C\uDFC5",level:"\uD83E\uDDEC",limit:"\uD83C\uDF0C",salud:"❤️",exp:"✉️",nkoins:"\uD83D\uDCB5",elixir:"\uD83E\uDD64",diamante:"\uD83D\uDC8E",ordinario:"\uD83D\uDCE6",singular:"\uD83C\uDF81",mitico:"\uD83D\uDDF3️",legendario:"\uD83D\uDDC3️",mascota:"\uD83E\uDDF8",basura:"\uD83D\uDDD1",armadura:"\uD83E\uDD7C",espada:"⚔️",madera:"\uD83E\uDEB5",roca:"\uD83E\uDEA8",cuerda:"\uD83D\uDD78️",caballo:"\uD83D\uDC0E",neko:"\uD83D\uDC08",doge:"\uD83D\uDC15",zorro:"\uD83E\uDD8A",miMascot:"\uD83C\uDF56",hierro:"⛓️",oro:"\uD83D\uDC51",esmeralda:"\uD83D\uDC9A"};
+    let emot = {
+      role: '🏅',
+      level: '🧬',
+      limit: '🌌',
+      salud: '❤️',
+      exp: '✉️',
+      nkoins: '💵',
+      elixir: '🥤',
+      diamante: '💎',
+      ordinario: '📦',
+      singular: '🎁',
+      mitico: '🗳️',
+      legendario: '🗃️',
+      mascota: '🧸',
+      basura: '🗑',
+      madera: '🪵',
+      roca: '🪨',
+      cuerda: '🕸️',
+      caballo: '🐎',
+      neko: '🐈',
+      doge: '🐕',
+      zorro: '🦊',
+      hierro: '⛓️',
+      oro: '👑',
+      esmeralda: '💚'
+    };
     let results = Object.keys(emot).map(v => [v, new RegExp(v, 'gi')]).filter(v => v[1].test(string))
     if (!results.length) return ''
     else return emot[results[0][0]]
@@ -70,3 +97,8 @@ watchFile(file, () => {
   console.log(chalk.cyan("\n["+file+"] Fue actualizado con exito!\n"))
   import(`${file}?update=${Date.now()}`)
 })
+
+/**
+[_>] https://github.com/NeKosmic/
+[_>] https://gitlab.com/NeKosmic/
+**/
