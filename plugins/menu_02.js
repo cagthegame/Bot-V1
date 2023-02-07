@@ -3,7 +3,7 @@
 </> Recode simple by @NeKosmic
 **/
 
-import*as e from"fs";let handler=async(a,{conn:i})=>{await i.sendMessage(a.chat,{image:{url:await i.profilePictureUrl(a.chat,"image").catch(e=>"./multimedia/imagenes/myunivers.jpg")},jpegThumbnail:e.readFileSync("./multimedia/imagenes/mylogo.jpg"),caption:`
+import*as a from"fs";let handler=async(e,{conn:i})=>{await i.sendMessage(e.chat,{image:{url:await i.profilePictureUrl(e.chat,"image").catch(a=>"./multimedia/imagenes/myunivers.jpg")},jpegThumbnail:a.readFileSync("./multimedia/imagenes/mylogo.jpg"),caption:`
 ╔═══════════
 ╟{ DESCARGADOR }
 ║
@@ -64,9 +64,10 @@ import*as e from"fs";let handler=async(a,{conn:i})=>{await i.sendMessage(a.chat,
 ║➣ ${Prefijo}fraseamor
 ║➣ ${Prefijo}minombre
 ║➣ ${Prefijo}simi
+║➣ ${Prefijo}aichat
 ║➣ ${Prefijo}wagrupos
 ╚═══════════
-`.trim()},{quoted:a})};handler.help=["randmenu"],handler.command=/^(randmenu)$/i,handler.group=!0;export default handler;
+`.trim()},{quoted:e})};handler.help=["randmenu"],handler.command=/^(randmenu)$/i,handler.group=!0;export default handler;
 
 /**
 [_>] https://github.com/NeKosmic/
