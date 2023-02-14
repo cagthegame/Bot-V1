@@ -3,31 +3,7 @@
 </> Recode simple by @NeKosmic
 **/
 
-import e from"../lib/database.js";import a from"../lib/calendario.js";import{exec as r}from"child_process";import*as t from"fs";import{createHash as n}from"crypto";let handler=async function(i,{conn:o,text:d,command:s}){let m=e.data.users[i.sender];if(!0===m.registered)return i.reply(`*[ ! ] Ya estuviste registrado en mi base de datos*
-Quieres volver a registrarte nuevamente?
-Use el comando:  
-
-${Prefijo}unreg <C\xf3digo de registro>
-`);if(!d)return i.reply("Nombre y edad!?");if(!d.includes("|"))return i.reply(`*[ ! ] Por favor agregue una barra en medio de nombre y edad*
-
-" | "
-`);let l=d.substring(0,d.indexOf("|")-0),g=d.substring(d.lastIndexOf("|")+1)||"-",u=n("md5").update(i.sender).digest("hex");if(isNaN(g))return await i.reply(`*[ ! ] En edad solo se aceptan n\xfameros -.-*`);if(l.length>=20)return i.reply("*[ ! ] Bruh el nombre es muy largo ._.*");if(g>31)return i.reply(`*[ ! ] Maximo de edad 30 a\xf1os*`);if(g<12)return i.reply(`*[ ! ] Minimo de edad 13 a\xf1os*`);let p=l,c=Math.round(g),f=c<"15"?"Puberto(a)":c<"18"?"Adolecente":c<"25"?"Joven":c<"30"?"Adulto(a)":"";try{var h=(await o.fetchStatus(i.sender)).status}catch{var h="-"}let y=h.length<5?a.fechaCompleta:"Info: "+h,$=await o.getName(i.sender),b=await o.profilePictureUrl(i.sender,"image").catch(e=>"./multimedia/imagenes/avatar_contact.png");await i.reply(MultiNK.Proces($));let v=`〘  *REGISTRO* 〙
-
-*❥ Fecha de registro* : 
-_${a.fechaCompleta}._
-
-┏─━─━━─━─━━─━
-╠≽️ *Nombre Registrado* : ${p}
-╠≽️ *Nombre usado en whatsapp* : ${$}
-╠≽️ *Edad* : ${c}
-╠≽️ *De acuerdo a tu edad eres un(a)* : ${f}
-╠≽️ *Informaci\xf3n* : ${h}
-╠≽️ *N\xba* : wa.me/${i.sender.split("@")[0]}
-┗─━─━━─━─━━─━
-
-_Codigo de registro_ : ${u}.py 
-
-ᴾᵘᵉᵈᵉ ᶜᵒᵖᶦᵃʳ ˢᵘ ᶜᵒ́ᵈᶦᵍᵒ ᵈᵉ ʳᵉᵍᶦˢᵗʳᵒ ᵉˡᶦᵐᶦⁿᵃⁿᵈᵒ ˡᵒˢ \xb3 ᵘ́ˡᵗᶦᵐᵒˢ ᵈᶦ́ᵍᶦᵗᵒˢ`.trim();m.name=p.trim(),m.age=c,m.regTime=+new Date,m.registered=!0,r(`magick './multimedia/imagenes/registro.jpg' -gravity west -fill '#ffffff' -font './multimedia/imagenes/font-gue.ttf' -size 1280x710 -pointsize 50 -interline-spacing 7.5 -annotate +440-45 'Nombre: ${p}' -pointsize 50 -annotate +440+83 'Edad: ${c} | ${f}' -pointsize 45 -annotate +440+210 '${y}' './multimedia/imagenes/rgdata.jpg' -resize %[fx:t?u.w*0.2:u.w] -gravity center -geometry -430+70 -composite 'multimedia/imagenes/rgx.jpg'`).on("error",()=>i.reply("error")).on("exit",()=>{try{o.sendMessage(i.chat,{image:t.readFileSync("./multimedia/imagenes/rgx.jpg"),caption:v},{quoted:i})}catch{o.sendMessage(i.chat,{image:{url:b},caption:v},{quoted:i})}})};handler.help=["rg"].map(e=>e+" <Nombre>|<Edad>"),handler.tags=["casual"],handler.command=/^(rg|reg)$/i;export default handler;
+import db from"../lib/database.js";import fechaC from"../lib/calendario.js";import{exec}from"child_process";import fs from"fs";import{createHash}from"crypto";let handler=async function(e,{conn:a,text:r,command:t}){const n=db.data.users[e.sender];if(!0===n.registered)return e.reply(`*[ ! ] Ya estuviste registrado en mi base de datos*\nQuieres volver a registrarte nuevamente?\nUse el comando:  \n\n${Prefijo}unreg <Código de registro>\n`);if(!r)return e.reply("Nombre y edad!?");if(!r.includes("|"))return e.reply('*[ ! ] Por favor agregue una barra en medio de nombre y edad*\n\n" | "\n');const i=r.substring(0,r.indexOf("|")-0),o=r.substring(r.lastIndexOf("|")+1)||"-",s=createHash("md5").update(e.sender).digest("hex");if(isNaN(o))return await e.reply("*[ ! ] En edad solo se aceptan números -.-*");if(i.length>=20)return e.reply("*[ ! ] Bruh el nombre es muy largo ._.*");if(o>31)return e.reply("*[ ! ] Maximo de edad 30 años*");if(o<12)return e.reply("*[ ! ] Minimo de edad 13 años*");const d=i,m=Math.round(o),g=m<"15"?"Puberto(a)":m<"18"?"Adolecente":m<"25"?"Joven":m<"30"?"Adulto(a)":"",c=s;try{var l=(await a.fetchStatus(e.sender)).status}catch{l="-"}const u=l.length<5?fechaC.fechaCompleta:"Info: "+l,f=await a.getName(e.sender),p=await a.profilePictureUrl(e.sender,"image").catch((e=>"./multimedia/imagenes/avatar_contact.png")),h=e.reply(MultiNK.Proces(f));await h;const y=`〘  *REGISTRO* 〙\n\n*❥ Fecha de registro* : \n_${fechaC.fechaCompleta}._\n\n┏─━─━━─━─━━─━\n╠≽️ *Nombre Registrado* : ${d}\n╠≽️ *Nombre usado en whatsapp* : ${f}\n╠≽️ *Edad* : ${m}\n╠≽️ *De acuerdo a tu edad eres un(a)* : ${g}\n╠≽️ *Información* : ${l}\n╠≽️ *Nº* : wa.me/${e.sender.split("@")[0]}\n┗─━─━━─━─━━─━\n\n_Codigo de registro_ : ${c}.py \n\nᴾᵘᵉᵈᵉ ᶜᵒᵖᶦᵃʳ ˢᵘ ᶜᵒ́ᵈᶦᵍᵒ ᵈᵉ ʳᵉᵍᶦˢᵗʳᵒ ᵉˡᶦᵐᶦⁿᵃⁿᵈᵒ ˡᵒˢ ³ ᵘ́ˡᵗᶦᵐᵒˢ ᵈᶦ́ᵍᶦᵗᵒˢ`.trim();n.name=d.trim(),n.age=m,n.regTime=+new Date,n.registered=!0,exec(`magick './multimedia/imagenes/registro.jpg' -gravity west -fill '#ffffff' -font './multimedia/imagenes/font-gue.ttf' -size 1280x710 -pointsize 50 -interline-spacing 7.5 -annotate +440-45 'Nombre: ${d}' -pointsize 50 -annotate +440+83 'Edad: ${m} | ${g}' -pointsize 45 -annotate +440+210 '${u}' './multimedia/imagenes/rgdata.jpg' -resize %[fx:t?u.w*0.2:u.w] -gravity center -geometry -430+70 -composite 'multimedia/imagenes/rgx.jpg'`).on("error",(()=>e.reply("error"))).on("exit",(()=>{try{a.sendMessage(e.chat,{image:fs.readFileSync("./multimedia/imagenes/rgx.jpg"),caption:y},{quoted:e})}catch{a.sendMessage(e.chat,{image:{url:p},caption:y},{quoted:e})}}))};handler.help=["rg <Nombre>|<Edad>"],handler.tags=["casual"],handler.command=/^(rg|reg)$/i;export default handler;
 
 /**
 [_>] https://github.com/NeKosmic/
