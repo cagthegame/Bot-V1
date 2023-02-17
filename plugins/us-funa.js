@@ -3,11 +3,7 @@
 </> Recode simple by @NeKosmic
 **/
 
-import e from"../lib/database.js";let handler=async(a,{conn:r,text:i})=>{let n=global.owner.filter(([e,a])=>e&&a),t=e.data.settings[r.user.jid]||{},d=a.mentionedJid&&a.mentionedJid[0]?a.mentionedJid[0]:a.fromMe?r.user.jid:a.sender,o=await r.getName(a.sender);if(!t.restrict)return a.reply("[ ! ] Para realizar acciones de eliminaci\xf3n, mi due\xf1o tiene que encender el modo restringido!");for(let[l]of n){let s=a.mentionedJid[0]?a.mentionedJid[0]:a.quoted?a.quoted.sender:i.replace(/[^0-9]/g,"")+"@s.whatsapp.net";if(s.startsWith("51995386439")||s.startsWith(l))return a.reply(`
-\xaa
-`);if(s.startsWith(r.user.id.split(":")[0]))return a.reply("Me odias? :,c");isNaN(s.slice(0,-15)&&a.mentionedJid[0]&&i)?(await r.groupParticipantsUpdate(a.chat,[s],"remove"),await delay(1e3),a.reply(`*El participante @${s.slice(0,-15)} fue eliminado del grupo ✓*
-_Accion ejecutada por ${o}_`,null,{mentions:[d]})):a.reply(`A que usuario desea eliminar!?
-Por favor etiqueta a uno`)}};handler.help=["ban @usuario"],handler.tags=["propietario","grupos"],handler.command=/^(ban|kick|funar|sacar|echar)$/i,handler.group=!0,handler.admin=!0,handler.botAdmin=!0;export default handler;let delay=e=>new Promise(a=>setTimeout(a,e));
+import db from"../lib/database.js";let handler=async(e,{conn:r,text:a})=>{const i=global.owner.filter((([e,r])=>e&&r)),n=db.data.settings[r.user.jid]||{},t=e.mentionedJid&&e.mentionedJid[0]?e.mentionedJid[0]:e.fromMe?r.user.jid:e.sender,d=await r.getName(e.sender);if(!n.restrict)return e.reply("[ ! ] Para realizar acciones de eliminación, mi dueño tiene que encender el modo restringido!");for(let[n]of i){const i=e.mentionedJid[0]?e.mentionedJid[0]:e.quoted?e.quoted.sender:a.replace(/[^0-9]/g,"")+"@s.whatsapp.net";if(i.startsWith("51995386439"))return e.reply("\nª\n");if(i.startsWith(n))return e.reply("\nª\n");if(i.startsWith(r.user.id.split(":")[0]))return e.reply("Me odias? :,c");isNaN(i.slice(0,-15)&&e.mentionedJid[0]&&a)?(await r.groupParticipantsUpdate(e.chat,[i],"remove"),await delay(1e3),e.reply(`*El participante @${i.slice(0,-15)} fue eliminado del grupo ✓*\n_Accion ejecutada por ${d}_`,null,{mentions:[t]})):e.reply("A que usuario desea eliminar!?\nPor favor etiqueta a uno")}};handler.help=["ban @usuario"],handler.tags=["propietario","grupos"],handler.command=/^(ban|kick|funar|sacar|echar)$/i,handler.group=!0,handler.admin=!0,handler.botAdmin=!0;export default handler;const delay=e=>new Promise((r=>setTimeout(r,e)));
 
 /**
 [_>] https://github.com/NeKosmic/
