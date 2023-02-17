@@ -1,4 +1,11 @@
-/*
-[ Jadibot-By Aiden ]
-*/
-import e from"../lib/connection.js";let handler=async(a,{conn:r})=>{(await e.conn).user.jid==r.user.jid?r.reply(a.chat,"Por favor use el comando desde el n\xfamero principal del Bot!",a):(await r.reply(a.chat,"Cerrando conexi\xf3n para Sub-Bots...\nᴱˡ ᵇᵒᵗ ᵖʳᶦⁿᶜᶦᵖᵃˡ ˢᵘᶠʳᶦʳᵃ́ ᵘⁿ ᵖᵉᑫᵘᵉⁿ̃ᵒ ʳᵉᶦⁿᶦᶜᶦᵒ ᵈᵉ ʳᵉᵈ",a),r.ws.close())};handler.help=["stopserbot"],handler.tags=["esclabot"],handler.command=/^(stopserbot)$/i,handler.owner=!0,handler.fail=null;export default handler;
+/**
+</> Original base BochilGaming 
+</> Recode simple by @NeKosmic
+**/
+
+import Connection from"../lib/connection.js";let handler=async(e,{conn:n})=>{(await Connection.conn).user.jid==n.user.jid?n.reply(e.chat,"Por favor use el comando desde el número principal del Bot!",e):(await n.reply(e.chat,"Cerrando conexión para Sub-Bots...\nᴱˡ ᵇᵒᵗ ᵖʳᶦⁿᶜᶦᵖᵃˡ ˢᵘᶠʳᶦʳᵃ́ ᵘⁿ ᵖᵉᑫᵘᵉⁿ̃ᵒ ʳᵉᶦⁿᶦᶜᶦᵒ ᵈᵉ ʳᵉᵈ",e),n.ws.close())};handler.help=["stopserbot"],handler.tags=["esclabot"],handler.command=/^stopserbot$/i,handler.owner=!0,handler.fail=null;export default handler; //[ Jadibot-By Aiden ]//
+
+/**
+[_>] https://github.com/NeKosmic/
+[_>] https://gitlab.com/NeKosmic/
+**/
