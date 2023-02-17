@@ -3,7 +3,7 @@
 </> Recode simple by @NeKosmic
 **/
 
-import e from"../lib/database.js";let handler=async(a,{conn:r,text:d})=>{if(!d)return a.reply("A quien desea desbanear?");let n;if(!(n=a.isGroup?a.mentionedJid[0]:a.chat))return a.reply("[ ! ] Por favor etiquete al usuario que desea desbanear");e.data.users[n].banned=!1,r.reply(a.chat,`Usuario desbaneado, ${n} puede volver a usar al bot [✓]`,a)};handler.help=["desbanear @usuario"],handler.tags=["propietario"],handler.command=/^desbanear$/i,handler.rowner=!0;export default handler;
+import db from"../lib/database.js";let handler=async(e,{conn:a,text:r})=>{if(!r)return e.reply("A quien desea desbanear?");let d;if(d=e.isGroup?e.mentionedJid[0]:e.chat,!d)return e.reply("[ ! ] Por favor etiquete al usuario que desea desbanear");db.data.users[d].banned=!1,a.reply(e.chat,`Usuario desbaneado, ${d} puede volver a usar al bot [✓]`,e)};handler.help=["desbanear @usuario"],handler.tags=["propietario"],handler.command=/^desbanear$/i,handler.rowner=!0;export default handler;
 
 /**
 [_>] https://github.com/NeKosmic/
