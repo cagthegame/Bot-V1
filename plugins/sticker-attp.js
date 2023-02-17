@@ -3,11 +3,7 @@
 </> Recode simple by @NeKosmic
 **/
 
-import t from"node-webpmux";import{randomBytes as e}from"crypto";import{addExif as r}from"../lib/sticker.js";let handler=async(t,{conn:e,text:a,command:l})=>{if(!a)return t.reply(`Modo de uso:
-
-${Prefijo+l} The life is a party
-`);let o=encodeURIComponent(a);try{let i=await r(await getBuffer(`https://api.xteam.xyz/attp?file&text=${o}`),"",`[_>] ${NombreDelBot}
-`);e.sendMessage(t.chat,{sticker:i},{quoted:t})}catch(n){t.reply(MultiNK.Error0())}};handler.help=["attp <texto>"],handler.tags=["conversor"],handler.command=/^attp$/i,handler.limit=!0;export default handler;let randomID=t=>e(Math.ceil(.5*t)).toString("hex").slice(0,t);
+import webp from"node-webpmux";import{randomBytes}from"crypto";import{addExif}from"../lib/sticker.js";let handler=async(t,{conn:e,text:r,command:o})=>{if(!r)return t.reply(`Modo de uso:\n\n${Prefijo+o} The life is a party\n`);const a=encodeURIComponent(r);try{const r=await getBuffer(`https://api.xteam.xyz/attp?file&text=${a}`),o=await addExif(r,"",`[_>] ${NombreDelBot}\n`);e.sendMessage(t.chat,{sticker:o},{quoted:t})}catch(e){t.reply(MultiNK.Error0())}};handler.help=["attp <texto>"],handler.tags=["conversor"],handler.command=/^attp$/i,handler.limit=!0;export default handler;const randomID=t=>randomBytes(Math.ceil(.5*t)).toString("hex").slice(0,t);export default handler;
 
 /**
 [_>] https://github.com/NeKosmic/
