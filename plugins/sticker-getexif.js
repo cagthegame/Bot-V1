@@ -3,7 +3,7 @@
 </> Recode simple by @NeKosmic
 **/
 
-import{format as t}from"util";let{default:{Image:e}}=await import("node-webpmux");let handler=async e=>{if(!e.quoted)return e.reply("[ ! ] Responda un sticker!");if(/sticker/.test(e.quoted.mtype)){let t=new Image;await t.load(await e.quoted.download()),e.reply(format(JSON.parse(t.exif.slice(22).toString())))}};handler.help=["getexif"],handler.tags=["conversor"],handler.command=/^getexif$/i;export default handler;
+import{format as e}from"util";let{default:{Image:t}}=await import("node-webpmux"),handler=async a=>{if(!a.quoted)return a.reply("[ ! ] Responda un sticker!");if(/sticker/.test(a.quoted.mtype)){let r=new t;await r.load(await a.quoted.download()),a.reply(e(JSON.parse(r.exif.slice(22).toString())))}};handler.help=["getexif"],handler.tags=["conversor"],handler.command=/^getexif$/i;export default handler;
 
 /**
 [_>] https://github.com/NeKosmic/
