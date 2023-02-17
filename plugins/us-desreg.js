@@ -3,7 +3,7 @@
 </> Recode simple by @NeKosmic
 **/
 
-import e from"../lib/database.js";import{createHash as r}from"crypto";let handler=async function(d,{args:t}){if(!t[0])return d.reply("Por favor introduzca su c\xf3digo de registro");let o=e.data.users[d.sender],a=r("md5").update(d.sender).digest("hex");if(t[0]!==a)return d.reply("[ ! ] Codigo de registro incorrecto");o.registered=!1,d.reply("[✓] Registro eliminado correctamente \uD83D\uDDD1️")};handler.help=["desreg <c\xf3digo de registro>"],handler.tags=["casual"],handler.command=/^(desreg|unreg)$/i,handler.register=!0;export default handler;
+import db from"../lib/database.js";import{createHash}from"crypto";let handler=async function(e,{args:r}){if(!r[0])return e.reply("Por favor introduzca su código de registro");const d=db.data.users[e.sender],a=createHash("md5").update(e.sender).digest("hex");if(r[0]!==a)return e.reply("[ ! ] Codigo de registro incorrecto");d.registered=!1,e.reply("[✓] Su registro fue eliminado de la base de datos correctamente 🗑️")};handler.help=["desreg <código de registro>"],handler.tags=["casual"],handler.command=/^(desreg|unreg)$/i,handler.register=!0;export default handler;
 
 /**
 [_>] https://github.com/NeKosmic/
