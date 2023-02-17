@@ -3,34 +3,7 @@
 </> Recode simple by @NeKosmic
 **/
 
-import{addExif as e}from"../lib/sticker.js";let handler=async(r,{conn:t,text:a,command:n})=>{if(!r.quoted)return r.reply("Responda un sticker!");let l=[`──────▄▀▄─────▄▀▄
-─────▄█░░▀▀▀▀▀░░█▄
-─▄▄──█░░░░░░░░░░░█──▄▄
-█▄▄█─█░░▀░░┬░░▀░░█─█▄▄█`,`───▄▄▄
-─▄▀░▄░▀▄
-─█░█▄▀░█
-─█░▀▄▄▀█▄█▄▀
-▄▄█▄▄▄▄███▀`,`──────▄▀─
-─█▀▀▀█▀█─
-──▀▄░▄▀──
-────█────
-──▄▄█▄▄──`,`──────────▄
-────────▄██
-─▄▀██▀█▀█▀███▀
-▀▀▀▀▀████▀▀▀
-──────▀██`,`▀▀▀▀█▀▀▀▀
-─▄▀█▀▀█──────▄
-█▄▄█▄▄██████▀
-▀▀█▀▀▀█▀▀
-─▀▀▀▀▀▀▀`,`───▄▀▀▀▄▄▄▄▄▄▄▀▀▀▄───
-───█▒▒░░░░░░░░░▒▒█───
-────█░░█░░░░░█░░█────
-─▄▄──█░░░▀█▀░░░█──▄▄─
-█░░█─▀▄░░░░░░░▄▀─█░░█`],i=!1;try{let[o,d]=a.split`|`,s=r.quoted.mimetype||"";if(!/webp/.test(s))return r.reply(`Envie \xf3 Responda un sticker con el comando ${Prefijo+n}`);let p=await r.quoted.download();if(!p)return r.reply("Responda un sticker!");i=await e(p,o||"",d||(o?"":`
-- [ ${NombreDelBot} ] -
-
-
-${pickRandom(l)}`))}catch(c){console.error(c),Buffer.isBuffer(c)&&(i=c)}finally{if(i)t.sendFile(r.chat,i,"wm.webp","",r,!1,{asSticker:!0});else throw"[!] La conversi\xf3n fall\xf3"}};handler.help=["robar <paquete>|<autor>"],handler.tags=["herramienta"],handler.command=/^(robar)$/i,handler.limit=!0;export default handler;
+import{addExif}from"../lib/sticker.js";let handler=async(n,{conn:e,text:r,command:t})=>{if(!n.quoted)return n.reply("Responda un sticker!");const a=["──────▄▀▄─────▄▀▄\n─────▄█░░▀▀▀▀▀░░█▄\n─▄▄──█░░░░░░░░░░░█──▄▄\n█▄▄█─█░░▀░░┬░░▀░░█─█▄▄█","───▄▄▄\n─▄▀░▄░▀▄\n─█░█▄▀░█\n─█░▀▄▄▀█▄█▄▀\n▄▄█▄▄▄▄███▀","──────▄▀─\n─█▀▀▀█▀█─\n──▀▄░▄▀──\n────█────\n──▄▄█▄▄──","──────────▄\n────────▄██\n─▄▀██▀█▀█▀███▀\n▀▀▀▀▀████▀▀▀\n──────▀██","▀▀▀▀█▀▀▀▀\n─▄▀█▀▀█──────▄\n█▄▄█▄▄██████▀\n▀▀█▀▀▀█▀▀\n─▀▀▀▀▀▀▀","───▄▀▀▀▄▄▄▄▄▄▄▀▀▀▄───\n───█▒▒░░░░░░░░░▒▒█───\n────█░░█░░░░░█░░█────\n─▄▄──█░░░▀█▀░░░█──▄▄─\n█░░█─▀▄░░░░░░░▄▀─█░░█"];let o=!1;try{let[i,l]=r.split`|`,d=n.quoted.mimetype||"";if(!/webp/.test(d))return n.reply(`Envie ó Responda un sticker con el comando ${Prefijo+t}`);let c=await n.quoted.download();if(!c)return n.reply("Responda un sticker!");o=await addExif(c,i||"",l||(i?"":`\n- [ ${NombreDelBot} ] -\n\n\n${pickRandom(a)}`))}catch(n){console.error(n),Buffer.isBuffer(n)&&(o=n)}finally{if(!o)throw"[!] La conversión falló";e.sendFile(n.chat,o,"wm.webp","",n,!1,{asSticker:!0})}};handler.help=["robar <paquete>|<autor>"],handler.tags=["herramienta"],handler.command=/^robar$/i,handler.limit=!0;export default handler;
 
 /**
 [_>] https://github.com/NeKosmic/
