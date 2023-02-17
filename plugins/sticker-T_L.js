@@ -3,34 +3,7 @@
 </> Recode simple by @NeKosmic
 **/
 
-import{sticker as e}from"../lib/sticker.js";import{stickerLine as n,stickerTelegram as t}from"@bochilteam/scraper";let handler=async(r,{conn:a,args:i,usedPrefix:l,command:s})=>{let c=/tele/i.test(s);if(!i[0])return r.reply(`*Este comando es para obtener stickers de ${c?"Telegram":"Line"}*
-
-Ejemplo de uso:
-${l+s} anime`);let o=await (c?t:n)(i[0]);for(let d of(r.reply(`
-*Resultados encontrados para ~${i[0]}~, total:* ${(o[0]?.stickers||o).length}
-_Enviando stickers..._
-`.trim()),o[0]?.stickers||o)){let m=await e(!1,d.sticker||d,"",`
-< ${NombreDelBot} >
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-[ NeKosmic ]`);await a.sendFile(r.chat,m,"sticker.webp","",r).catch(console.error),await delay(1500)}};handler.help=["telesticker <buscar>","linesticker <buscar>"],handler.tags=["conversor"],handler.command=/^(telesticker)|(linesticker)$/i,handler.limit=5;export default handler;let delay=e=>new Promise(n=>setTimeout(n,e));
+import{sticker}from"../lib/sticker.js";import{stickerLine,stickerTelegram}from"@bochilteam/scraper";let handler=async(e,{conn:n,args:r,usedPrefix:t,command:s})=>{const i=/tele/i.test(s);if(!r[0])return e.reply(`*Este comando es para obtener stickers de ${i?"Telegram":"Line"}*\n\nEjemplo de uso:\n${t+s} anime`);const a=await(i?stickerTelegram:stickerLine)(r[0]);e.reply(`\n*Resultados encontrados para ~${r[0]}~, total:* ${(a[0]?.stickers||a).length}\n_Enviando stickers..._\n`.trim());for(let r of a[0]?.stickers||a){const t=await sticker(!1,r.sticker||r,"",`\n< ${NombreDelBot} >\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n[ NeKosmic ]`);await n.sendFile(e.chat,t,"sticker.webp","",e).catch(console.error),await delay(1500)}};handler.help=["telesticker <buscar>","linesticker <buscar>"],handler.tags=["conversor"],handler.command=/^(telesticker|linesticker)$/i,handler.limit=5;export default handler;const delay=e=>new Promise((n=>setTimeout(n,e)));
 
 /**
 [_>] https://github.com/NeKosmic/
