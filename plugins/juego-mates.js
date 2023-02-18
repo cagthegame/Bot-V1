@@ -3,22 +3,7 @@
 </> Recode simple by @NeKosmic
 **/
 
-let handler=async(e,{conn:n,args:o,command:t})=>{n.math=n.math?n.math:{};let a=Object.keys(modes).map(e=>[e,`${Prefijo}${t} ${e}`]);if(o.length<1)return e.reply(`*Modos disponibles* : 
-_${Object.keys(modes).join("_\n_")}_
-*Ejemplo de uso* : 
-
-${Prefijo+t} kinder
-  `);let $=o[0].toLowerCase();if(!($ in modes))return e.reply(`*[ ! ] Por favor use un modo valido*
-*Modos disponibles* : 
-_${Object.keys(modes).join("_\n_")}_
-*Ejemplo de uso* : 
-
-${Prefijo+t} kinder
-  `);let r=e.chat;if(r in n.math)return n.reply(e.chat,"[ ! ] Todav\xeda hay preguntas sin respuesta en este chat.",n.math[r][0]);let s=genMath($);n.math[r]=[await n.reply(e.chat,`\xbfCu\xe1l es el resultado de *${s.str}*?
-
-Tiempo disponible: ${(s.time/1e3).toFixed(2)} segundos
-Recompensa por respuesta correcta: ${s.bonus} XP`,e),s,4,setTimeout(()=>{n.math[r]&&n.sendButton(e.chat,`\xa1Se acab\xf3 el tiempo!
-La respuesta es ${s.result}`,NombreDelBot,null,[["SIGUIENTE",`${Prefijo+t} ${s.mode}`],...a],n.math[r][0]),delete n.math[r]},s.time)]};handler.help=["mates <modo>"],handler.tags=["games"],handler.command=/^mates/i,handler.group=!0,handler.limit=!0;let modes={kinder:[-3,3,-3,3,"+-",1e4,10],escuela:[-10,10,-10,10,"*/+-",15e4,40],colegio:[-40,40,-20,20,"*/+-",25e3,150],universidad:[-100,100,-70,70,"*/+-",4e4,350],maestro:[-999999,999999,-999999,999999,"*/",6e4,9999],imposible:[-99999999999,99999999999,-99999999999,999999999999,"*/",3e4,35e3],wtf:[-999999999999999,999999999999999,-999,999,"/",25e3,5e4]},operators={"+":"+","-":"-","*":"\xd7","/":"\xf7"};function genMath(e){let[n,o,t,a,$,r,s]=modes[e],d=randomInt(n,o),l=randomInt(t,a),m=pickRandom([...$]),i=Function(`return ${d} ${m.replace("/","*")} ${l<0?`(${l})`:l}`)();return"/"==m&&([d,i]=[i,d]),{str:`${d} ${operators[m]} ${l}`,mode:e,time:r,bonus:s,result:i}}function randomInt(e,n){return e>n&&([e,n]=[n,e]),e=Math.floor(e),Math.floor(((n=Math.floor(n))-e)*Math.random()+e)}handler.modes=modes;export default handler;
+let handler=async(e,{conn:o,args:n,command:t})=>{o.math=o.math?o.math:{};const a=Object.keys(modes).map((e=>[e,`${Prefijo}${t} ${e}`]));if(n.length<1)return e.reply(`*Modos disponibles* : \n_${Object.keys(modes).join("_\n_")}_\n*Ejemplo de uso* : \n\n${Prefijo+t} kinder\n  `);const r=n[0].toLowerCase();if(!(r in modes))return e.reply(`*[ ! ] Por favor use un modo valido*\n*Modos disponibles* : \n_${Object.keys(modes).join("_\n_")}_\n*Ejemplo de uso* : \n\n${Prefijo+t} kinder\n  `);const s=e.chat;if(s in o.math)return o.reply(e.chat,"[ ! ] Todavía hay preguntas sin respuesta en este chat.",o.math[s][0]);const d=genMath(r);o.math[s]=[await o.reply(e.chat,`¿Cuál es el resultado de *${d.str}*?\n\nTiempo disponible: ${(d.time/1e3).toFixed(2)} segundos\nRecompensa por respuesta correcta: ${d.bonus} XP`,e),d,4,setTimeout((()=>{o.math[s]&&o.sendButton(e.chat,`¡Se acabó el tiempo!\nLa respuesta es ${d.result}`,NombreDelBot,null,[["SIGUIENTE",`${Prefijo+t} ${d.mode}`],...a],o.math[s][0]),delete o.math[s]}),d.time)]};handler.help=["mates <modo>"],handler.tags=["games"],handler.command=/^mates/i,handler.group=!0,handler.limit=!0;let modes={kinder:[-3,3,-3,3,"+-",1e4,10],escuela:[-10,10,-10,10,"*/+-",15e4,40],colegio:[-40,40,-20,20,"*/+-",25e3,150],universidad:[-100,100,-70,70,"*/+-",4e4,350],maestro:[-999999,999999,-999999,999999,"*/",6e4,9999],imposible:[-99999999999,99999999999,-99999999999,999999999999,"*/",3e4,35e3],wtf:[-999999999999999,999999999999999,-999,999,"/",25e3,5e4]},operators={"+":"+","-":"-","*":"×","/":"÷"};function genMath(e){let[o,n,t,a,r,s,d]=modes[e],m=randomInt(o,n),i=randomInt(t,a),l=pickRandom([...r]),h=Function(`return ${m} ${l.replace("/","*")} ${i<0?`(${i})`:i}`)();return"/"==l&&([m,h]=[h,m]),{str:`${m} ${operators[l]} ${i}`,mode:e,time:s,bonus:d,result:h}}function randomInt(e,o){return e>o&&([e,o]=[o,e]),e=Math.floor(e),Math.floor(((o=Math.floor(o))-e)*Math.random()+e)}handler.modes=modes;export default handler;
 
 /**
 [_>] https://github.com/NeKosmic/
