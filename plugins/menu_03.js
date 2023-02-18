@@ -3,24 +3,7 @@
 </> Recode simple by @NeKosmic
 **/
 
-import*as e from"fs";let handler=async(a,{conn:i})=>{await i.sendMessage(a.chat,{image:{url:await i.profilePictureUrl(a.chat,"image").catch(e=>"./multimedia/imagenes/myunivers.jpg")},jpegThumbnail:e.readFileSync("./multimedia/imagenes/mylogo.jpg"),caption:`
-╔═══════════
-╟{ CREA-LOGOS }
-║
-║☞ ${Prefijo}logo
-║☞ ${Prefijo}lolice
-║☞ ${Prefijo}horny
-║☞ ${Prefijo}blur
-║☞ ${Prefijo}gay
-║☞ ${Prefijo}triggered
-║☞ ${Prefijo}simpcard
-║☞ ${Prefijo}pixelate
-║☞ ${Prefijo}its-so-stupid
-║☞ ${Prefijo}youtube-comment
-║☞ ${Prefijo}escribir
-║☞ ${Prefijo}imgtxt
-╚═══════════
-`.trim()},{quoted:a})};handler.help=["logofabrica"],handler.command=/^(logofabrica)$/i,handler.group=!0;export default handler;
+import fs from"fs";let handler=async(e,{conn:i})=>{const r=await i.profilePictureUrl(e.chat,"image").catch((e=>"./multimedia/imagenes/myunivers.jpg"));await i.sendMessage(e.chat,{image:{url:r},jpegThumbnail:fs.readFileSync("./multimedia/imagenes/mylogo.jpg"),caption:`\n╔═══════════\n╟{ CREA-LOGOS }\n║\n║☞ ${Prefijo}logo\n║☞ ${Prefijo}lolice\n║☞ ${Prefijo}horny\n║☞ ${Prefijo}blur\n║☞ ${Prefijo}gay\n║☞ ${Prefijo}triggered\n║☞ ${Prefijo}simpcard\n║☞ ${Prefijo}pixelate\n║☞ ${Prefijo}its-so-stupid\n║☞ ${Prefijo}youtube-comment\n║☞ ${Prefijo}escribir\n║☞ ${Prefijo}imgtxt\n╚═══════════\n`.trim()},{quoted:e})};handler.help=["logofabrica"],handler.command=/^logofabrica$/i,handler.group=!0;export default handler;
 
 /**
 [_>] https://github.com/NeKosmic/
