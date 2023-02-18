@@ -3,12 +3,7 @@
 </> Recode simple by @NeKosmic
 **/
 
-let handler=async(n,{conn:a,participants:e,groupMetadata:l})=>{let d=e.filter(n=>n.admin),r=d.map((n,a)=>`🛡 [${a+1}] wa.me/${n.id.split("@")[0]}`).join("\n\n");n.reply(`*Administradores del grupo* : ${l.subject}
-
-*Total* : 
-
-${r}
-`)};handler.help=["admins"],handler.tags=["casual"],handler.command=/^(admins)$/i,handler.group=!0;export default handler;
+let handler=async(a,{conn:n,participants:e,groupMetadata:d})=>{const l=e.filter((a=>a.admin)).map(((a,n)=>`🛡 [${n+1}] wa.me/${a.id.split("@")[0]}`)).join("\n\n");a.reply(`*Administradores del grupo* : ${d.subject}\n\n*Total* : \n\n${l}\n`)};handler.help=["admins"],handler.tags=["casual"],handler.command=/^admins$/i,handler.group=!0;export default handler;
 
 /**
 [_>] https://github.com/NeKosmic/
