@@ -3,7 +3,7 @@
 </> Recode simple by @NeKosmic
 **/
 
-let handler=async(e,{conn:r,isAdmin:a,isOwner:t})=>{if(e.isGroup&&!(a||t))return dfail("admin",e,r);let n=e.chat;if(r.vote=r.vote?r.vote:{},!(n in r.vote))return e.reply(":v");delete r.vote[n],e.reply("Votacion reiniciada correctamente ✓")};handler.help=["reiniciarvotos"],handler.tags=["admins","grupos"],handler.command=/^reiniciarvotos$/i,handler.group=!0;export default handler;
+let handler=async(e,{conn:r,isAdmin:n,isOwner:i})=>{if(e.isGroup&&!n&&!i)return dfail("admin",e,r);const a=e.chat;if(r.vote=r.vote?r.vote:{},!(a in r.vote))return e.reply(":v");delete r.vote[a],e.reply("Votacion reiniciada correctamente ✓")};handler.help=["reiniciarvotos"],handler.tags=["admins","grupos"],handler.command=/^reiniciarvotos$/i,handler.group=!0;export default handler;
 
 /**
 [_>] https://github.com/NeKosmic/
