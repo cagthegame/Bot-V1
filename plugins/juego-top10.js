@@ -3,32 +3,7 @@
 </> Recode simple by @NeKosmic
 **/
 
-import*as e from"fs";let handler=async(a,{conn:n,participants:t,text:i})=>{if(!i)return a.reply("*[ ! ] Que top desea generar?*");if(i.length<5)return a.reply("*[ ! ] El texto es muy corto*");let l=t[Math.floor(Math.random()*t.length)].id.split("@")[0],o=t[Math.floor(Math.random()*t.length)].id.split("@")[0],r=t[Math.floor(Math.random()*t.length)].id.split("@")[0],d=t[Math.floor(Math.random()*t.length)].id.split("@")[0],p=t[Math.floor(Math.random()*t.length)].id.split("@")[0],m=t[Math.floor(Math.random()*t.length)].id.split("@")[0],s=t[Math.floor(Math.random()*t.length)].id.split("@")[0],g=t[Math.floor(Math.random()*t.length)].id.split("@")[0],h,$=`*TOP 10 ${i}*
-_Generador_ : ${await n.getName(a.sender)}
-${"‎".repeat(850)}
-╭╼┥${i}┝╾─╮
-
-_1.\xba @${l}_ 
-
-_2.\xba @${o}_ 
-
-_3.\xba @${r}_ 
-
-_4.\xba @${d}_ 
-
-_5.\xba @${p}_ 
-
-_6.\xba @${m}_ 
-
-_7.\xba @${s}_ 
-
-_8.\xba @${g}_ 
-
-_9.\xba @${t[Math.floor(Math.random()*t.length)].id.split("@")[0]}_ 
-
-_10.\xba @${t[Math.floor(Math.random()*t.length)].id.split("@")[0]}_
-
-╰──┥${NombreDelBot}┝──╯`;await a.reply($,a.chat,{mentions:n.parseMention($)});let u=e.readFileSync(`./multimedia/sonidos/audishit/audishit${pickRandom(["1","2","3","4","5","6"])}.m4a`),f=await fetchJson(`https://latam-api.vercel.app/pi/audi_top?apikey=${MyApiKey}`);if(!f.audio)return n.sendMessage(a.chat,{audio:u,fileName:"Top10.mp3",mimetype:"audio/mpeg",ptt:!0},{quoted:{key:{participant:"0@s.whatsapp.net"},message:{locationMessage:{name:`TOP 10 ${i}`,jpegThumbnail:e.readFileSync("./multimedia/imagenes/logo.jpg")}}}});n.sendMessage(a.chat,{audio:{url:f.audio},fileName:"Top10.mp3",mimetype:"audio/mpeg",ptt:!0},{quoted:{key:{participant:"0@s.whatsapp.net"},message:{locationMessage:{name:`TOP 10 ${i}`,jpegThumbnail:e.readFileSync("./multimedia/imagenes/logo.jpg")}}}})};handler.help=["top10"],handler.tags=["games"],handler.command=/^(top10)$/i,handler.group=!0,handler.limit=!0;export default handler;
+import fs from"fs";let handler=async(a,{conn:e,participants:t,text:n})=>{if(!n)return a.reply("*[ ! ] Que top desea generar?*");if(n.length<5)return a.reply("*[ ! ] El texto es muy corto*");const i=t[Math.floor(Math.random()*t.length)].id.split("@")[0],o=t[Math.floor(Math.random()*t.length)].id.split("@")[0],l=t[Math.floor(Math.random()*t.length)].id.split("@")[0],r=t[Math.floor(Math.random()*t.length)].id.split("@")[0],p=t[Math.floor(Math.random()*t.length)].id.split("@")[0],d=t[Math.floor(Math.random()*t.length)].id.split("@")[0],s=t[Math.floor(Math.random()*t.length)].id.split("@")[0],h=t[Math.floor(Math.random()*t.length)].id.split("@")[0],m=t[Math.floor(Math.random()*t.length)].id.split("@")[0],g=t[Math.floor(Math.random()*t.length)].id.split("@")[0],M=`*TOP 10 ${n}*\n_Generador_ : ${await e.getName(a.sender)}\n${String.fromCharCode(8206).repeat(850)}\n╭╼┥${n}┝╾─╮\n\n_1.º @${i}_ \n\n_2.º @${o}_ \n\n_3.º @${l}_ \n\n_4.º @${r}_ \n\n_5.º @${p}_ \n\n_6.º @${d}_ \n\n_7.º @${s}_ \n\n_8.º @${h}_ \n\n_9.º @${m}_ \n\n_10.º @${g}_\n\n╰──┥${NombreDelBot}┝──╯`;await a.reply(M,a.chat,{mentions:e.parseMention(M)});const f=fs.readFileSync(`./multimedia/sonidos/audishit/audishit${pickRandom(["1","2","3","4","5","6"])}.m4a`),u=await fetchJson(`https://latam-api.vercel.app/pi/audi_top?apikey=${MyApiKey}`);if(!u.audio)return e.sendMessage(a.chat,{audio:f,fileName:"Top10.mp3",mimetype:"audio/mpeg",ptt:!0},{quoted:{key:{participant:"0@s.whatsapp.net"},message:{locationMessage:{name:`TOP 10 ${n}`,jpegThumbnail:fs.readFileSync("./multimedia/imagenes/logo.jpg")}}}});e.sendMessage(a.chat,{audio:{url:u.audio},fileName:"Top10.mp3",mimetype:"audio/mpeg",ptt:!0},{quoted:{key:{participant:"0@s.whatsapp.net"},message:{locationMessage:{name:`TOP 10 ${n}`,jpegThumbnail:fs.readFileSync("./multimedia/imagenes/logo.jpg")}}}})};handler.help=["top10"],handler.tags=["games"],handler.command=/^top10$/i,handler.group=!0,handler.limit=!0;export default handler;
 
 /**
 [_>] https://github.com/NeKosmic/
