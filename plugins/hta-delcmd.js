@@ -3,7 +3,7 @@
 </> Recode simple by @NeKosmic
 **/
 
-import e from"../lib/database.js";let handler=async(r,{text:t})=>{let a=t;if(r.quoted&&r.quoted.fileSha256&&(a=r.quoted.fileSha256.toString("hex")),!a)return r.reply("No se encontraron hashes!");let l=e.data.sticker;if(l[a]&&l[a].locked)return r.reply("[ ! ] No tienes permiso para eliminar este sticker-cmd");delete l[a],r.reply(`Eliminado correctamente ✓`)};handler.help=["delcmd <texto>"],handler.tags=["herramienta"],handler.command=/^delcmd$/i,handler.premium=!0;export default handler;
+import db from"../lib/database.js";let handler=async(e,{text:r})=>{let t=r;if(e.quoted&&e.quoted.fileSha256&&(t=e.quoted.fileSha256.toString("hex")),!t)return e.reply("No se encontraron hashes!");const a=db.data.sticker;if(a[t]&&a[t].locked)return e.reply("[ ! ] No tienes permiso para eliminar este sticker-cmd");delete a[t],e.reply("Eliminado correctamente ✓")};handler.help=["delcmd <texto>"],handler.tags=["herramienta"],handler.command=/^delcmd$/i,handler.premium=!0;export default handler;
 
 /**
 [_>] https://github.com/NeKosmic/
