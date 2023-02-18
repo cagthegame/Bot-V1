@@ -3,13 +3,7 @@
 </> Recode simple by @NeKosmic
 **/
 
-import{exec as e}from"child_process";let handler=async(n,{conn:r,args:a,command:o})=>{"continuar"===a[0]?(e("bash neoqr.sh",(e,r)=>{if(e)return n.reply(String(e));r&&n.reply("_Archivo eliminado..._"),n.reply(`
-_La sesi\xf3n actual del bot fue eliminada correctamente, ahora podras generar un nuevo c\xf3digo QR desde la consola para escanear._
-`)}),reacMoji(n.chat,r,"♻️",n)):a[0]||n.reply(`
-_Desea generar un nuevo c\xf3digo QR?, para generar un nuevo c\xf3digo QR use el comando_
-
-${Prefijo+o} continuar
-`)};handler.help=["neoqr"],handler.tags=["propietario"],handler.command=/^(neoqr|newqr|nuevoqr)$/i,handler.rowner=!0;export default handler;
+import{exec}from"child_process";let handler=async(e,{conn:n,args:r,command:a})=>{"continuar"===r[0]?(exec("bash neoqr.sh",((n,r)=>{if(n)return e.reply(String(n));r&&e.reply("_Archivo eliminado..._"),e.reply("\n_La sesión actual del bot fue eliminada correctamente, ahora podras generar un nuevo código QR desde la consola para escanear._\n")})),reacMoji(e.chat,n,"♻️",e)):r[0]||e.reply(`\n_Desea generar un nuevo código QR?, para generar un nuevo código QR use el comando_\n\n${Prefijo+a} continuar\n`)};handler.help=["neoqr"],handler.tags=["propietario"],handler.command=/^(neoqr|newqr|nuevoqr)$/i,handler.rowner=!0;export default handler;
 
 /**
 [_>] https://github.com/NeKosmic/
