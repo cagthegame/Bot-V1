@@ -3,12 +3,7 @@
 </> Recode simple by @NeKosmic
 **/
 
-import t from"../lib/database.js";let handler=t=>t;handler.before=async function(e){if(!/^-?[0-9]+(\.[0-9]+)?$/.test(e.text))return!0;let a=e.chat;if(!e.quoted||!e.quoted.fromMe||!e.text||!/^¿Cuál es el resultado de/i.test(e.quoted.text))return!0;if(this.math=this.math?this.math:{},!(a in this.math))return this.sendMessage(e.chat,{text:"La pregunta ya fue resuelta..."},{quoted:e});if(e.quoted.id==this.math[a][0].id){let s=JSON.parse(JSON.stringify(this.math[a][1]));e.text==s.result?(t.data.users[e.sender].exp+=s.bonus,clearTimeout(this.math[a][3]),delete this.math[a],this.sendButton(e.chat,`*Respuesta correcta!*
-Aqui tienes tu recompensa:
-+${s.bonus} XP
-`,NombreDelBot,null,[["SIGUIENTE",Prefijo+`mates ${s.mode}`]],e)):0==--this.math[a][2]?(clearTimeout(this.math[a][3]),delete this.math[a],e.reply(`*[ ! ] Se acabo el tiempo*
-Respuesta: *${s.result}*`)):await e.reply(`*Respuesta incorrecta!*
-Te quedan ${this.math[a][2]} oportunidades`)}return!0};export default handler;
+import db from"../lib/database.js";let handler=t=>t;handler.before=async function(t){if(!/^-?[0-9]+(\.[0-9]+)?$/.test(t.text))return!0;const e=t.chat;if(!(t.quoted&&t.quoted.fromMe&&t.text&&/^¿Cuál es el resultado de/i.test(t.quoted.text)))return!0;if(this.math=this.math?this.math:{},!(e in this.math))return this.sendMessage(t.chat,{text:"La pregunta ya fue resuelta..."},{quoted:t});if(t.quoted.id==this.math[e][0].id){const a=JSON.parse(JSON.stringify(this.math[e][1]));t.text==a.result?(db.data.users[t.sender].exp+=a.bonus,clearTimeout(this.math[e][3]),delete this.math[e],this.sendButton(t.chat,`*Respuesta correcta!*\nAqui tienes tu recompensa:\n+${a.bonus} XP\n`,NombreDelBot,null,[["SIGUIENTE",Prefijo+`mates ${a.mode}`]],t)):0==--this.math[e][2]?(clearTimeout(this.math[e][3]),delete this.math[e],t.reply(`*[ ! ] Se acabo el tiempo*\nRespuesta: *${a.result}*`)):await t.reply(`*Respuesta incorrecta!*\nTe quedan ${this.math[e][2]} oportunidades`)}return!0};export default handler;
 
 /**
 [_>] https://github.com/NeKosmic/
