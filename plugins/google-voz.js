@@ -3,67 +3,7 @@
 </> Recode simple by @NeKosmic
 **/
 
-import e from"node-gtts";import{readFileSync as a,unlinkSync as n}from"fs";import{join as o}from"path";let defaultLang=MultiNK.Lengua(),handler=async(e,{conn:a,args:n,command:o,text:t})=>{if(t.length>600)return e.reply("Maximo de caracteres 600");let i=n[0],s=n.slice(1).join(" ");if(2!==(n[0]||"").length&&(i=defaultLang,s=n.join(" ")),!s&&e.quoted?.text&&(s=e.quoted.text),!s)return a.sendButton(e.chat,`*[ ! ] Por favor, despues de usar el comando ${o}, tiene que agregarle el prefijo del idioma en el cual desea escuchar el audio* 
-`,`Ejemplo de uso:
-
-${Prefijo+o} es hola
-
--> "es" = prefijo espa\xf1ol
---> "hola" = texto
-`,NombreDelBot,[`*[ idiomas disponibles ]* :${"‎".repeat(850)}
-\`\`\`
-  'af': 'Africano',
-  'sq': 'Albanes',
-  'ar': 'Arabico',
-  'hy': 'Armenio',
-  'ca': 'Catalan',
-  'zh': 'Chino',
-  'zh-cn': 'Chino (Mandarin/China)',
-  'zh-tw': 'Chino (Mandarin/Taiwanes)',
-  'zh-yue': 'Chino (Cantones)',
-  'hr': 'Croata',
-  'cs': 'Checo',
-  'da': 'Danes',
-  'nl': 'Holandes',
-  'en': 'Ingles',
-  'en-au': 'Ingles (Australia)',
-  'en-uk': 'Ingles (Reino unido)',
-  'en-us': 'Ingles (Estados unidos)',
-  'eo': 'Esperanto',
-  'fi': 'Finlandes',
-  'fr': 'Frances',
-  'de': 'Aleman',
-  'el': 'Griego',
-  'ht': 'Criollo haitiano',
-  'hi': 'Hindio',
-  'hu': 'Hungaro',
-  'is': 'islandes',
-  'id': 'Indonesio',
-  'it': 'Italiano',
-  'ja': 'Japones',
-  'ko': 'Koreano',
-  'la': 'Latino',
-  'lv': 'Leton',
-  'mk': 'Macedonio',
-  'no': 'Noruego',
-  'pl': 'Polaco',
-  'pt': 'Portugues',
-  'pt-br': 'Portugues (Brazil)',
-  'ro': 'Rumano',
-  'ru': 'Ruso',
-  'sr': 'Serbio',
-  'sk': 'Slovaco',
-  'es': 'Espa\xf1ol',
-  'es-es': 'Espa\xf1ol (Espa\xf1a)',
-  'es-us': 'Espa\xf1ol (Estados Unidos)',
-  'sw': 'Swahili',
-  'sv': 'Sueco',
-  'ta': 'Tamil',
-  'th': 'Tailandes',
-  'tr': 'Turco',
-  'vi': 'Vietnamita',
-  'cy': 'Gales'
-\`\`\``,"</bromita>"],e);let l;try{l=await tts(s,i)}catch(r){e.reply(MultiNK.Error0()),l=await tts(s=n.join(" "),defaultLang)}finally{l&&a.sendFile(e.chat,l,"audiotxt.opus",null,e,!0)}};handler.help=["voz <lenguaje> <texto>"],handler.tags=["herramienta"],handler.command=/^(voz|gtts|tts|vos)$/i,handler.limit=!0;export default handler;function tts(t,i=defaultLang){return new Promise((s,l)=>{try{let r=e(i),d=o(global.__dirname(import.meta.url),"../tmp",1*new Date+".wav");r.save(d,t,()=>{s(a(d)),n(d)})}catch(u){l(u)}})}
+import gtts from"node-gtts";import{readFileSync,unlinkSync}from"fs";import{join}from"path";const defaultLang=MultiNK.Lengua();let handler=async(n,{conn:e,args:a,command:o,text:t})=>{if(t.length>600)return n.reply("Maximo de caracteres 600");let i,r=a[0],l=a.slice(1).join(" ");if(2!==(a[0]||"").length&&(r=defaultLang,l=a.join(" ")),!l&&n.quoted?.text&&(l=n.quoted.text),!l)return e.sendButton(n.chat,`*[ ! ] Por favor, despues de usar el comando ${o}, tiene que agregarle el prefijo del idioma en el cual desea escuchar el audio* \n`,`Ejemplo de uso:\n\n${Prefijo+o} es hola\n\n-> "es" = prefijo español\n--\x3e "hola" = texto\n`,NombreDelBot,[`*[ idiomas disponibles ]* :${String.fromCharCode(8206).repeat(850)}\n\`\`\`\n  'af': 'Africano',\n  'sq': 'Albanes',\n  'ar': 'Arabico',\n  'hy': 'Armenio',\n  'ca': 'Catalan',\n  'zh': 'Chino',\n  'zh-cn': 'Chino (Mandarin/China)',\n  'zh-tw': 'Chino (Mandarin/Taiwanes)',\n  'zh-yue': 'Chino (Cantones)',\n  'hr': 'Croata',\n  'cs': 'Checo',\n  'da': 'Danes',\n  'nl': 'Holandes',\n  'en': 'Ingles',\n  'en-au': 'Ingles (Australia)',\n  'en-uk': 'Ingles (Reino unido)',\n  'en-us': 'Ingles (Estados unidos)',\n  'eo': 'Esperanto',\n  'fi': 'Finlandes',\n  'fr': 'Frances',\n  'de': 'Aleman',\n  'el': 'Griego',\n  'ht': 'Criollo haitiano',\n  'hi': 'Hindio',\n  'hu': 'Hungaro',\n  'is': 'islandes',\n  'id': 'Indonesio',\n  'it': 'Italiano',\n  'ja': 'Japones',\n  'ko': 'Koreano',\n  'la': 'Latino',\n  'lv': 'Leton',\n  'mk': 'Macedonio',\n  'no': 'Noruego',\n  'pl': 'Polaco',\n  'pt': 'Portugues',\n  'pt-br': 'Portugues (Brazil)',\n  'ro': 'Rumano',\n  'ru': 'Ruso',\n  'sr': 'Serbio',\n  'sk': 'Slovaco',\n  'es': 'Español',\n  'es-es': 'Español (España)',\n  'es-us': 'Español (Estados Unidos)',\n  'sw': 'Swahili',\n  'sv': 'Sueco',\n  'ta': 'Tamil',\n  'th': 'Tailandes',\n  'tr': 'Turco',\n  'vi': 'Vietnamita',\n  'cy': 'Gales'\n\`\`\``,"</bromita>"],n);try{i=await tts(l,r)}catch(e){n.reply(MultiNK.Error0()),l=a.join(" "),i=await tts(l,defaultLang)}finally{i&&e.sendFile(n.chat,i,"audiotxt.opus",null,n,!0)}};handler.help=["voz <lenguaje> <texto>"],handler.tags=["herramienta"],handler.command=/^(voz|gtts|tts|vos)$/i,handler.limit=!0;export default handler;function tts(n,e=defaultLang){return new Promise(((a,o)=>{try{let o=gtts(e),t=join(global.__dirname(import.meta.url),"../tmp",1*new Date+".wav");o.save(t,n,(()=>{a(readFileSync(t)),unlinkSync(t)}))}catch(n){o(n)}}))}
 
 /**
 [_>] https://github.com/NeKosmic/
