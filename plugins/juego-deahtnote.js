@@ -3,18 +3,7 @@
 </> Recode simple by @NeKosmic
 **/
 
-import*as e from"fs";let handler=async(a,{conn:t,text:n,participants:r,command:s})=>{if(!n)return a.reply(`*[ ! ] Agrege una razon para la ejecuci\xf3n*
-Ejemplo: 
-
-${Prefijo+s} Hoy muere un random :v
-`);if(n.length<9)return a.reply("*[ ! ] La razon es muy corta*");let i=await t.profilePictureUrl(a.sender,"image").catch(e=>"./multimedia/imagenes/avatar_contact.png");try{let p=r;var o=[];p.map(async e=>{o.push(e.id.replace("c.us","s.whatsapp.net"))});let l=1e4,d=o[Math.floor(Math.random()*o.length)];if(d.startsWith(t.user.id.split(":")[0]))return a.reply("Hoy no muere nadie :D");t.sendMessage(a.chat,{text:`*[ Death Note ]* 📓
-
-┏━⊱ *Seleccinado:* @${d.split("@")[0]}
-┗⊱ *Raz\xf3n de su ejecucion:* 
-${n}
-
-_Tiene ${l%6e4/1e3} segundos para decir sus \xfaltimas palabras_
-`,mentions:[d]},{ephemeralExpiration:86400,quoted:{key:{participant:"0@s.whatsapp.net",remoteJid:"0@s.whatsapp.net"},message:{groupInviteMessage:{groupJid:"51995386439-1616169743@g.us",inviteCode:"m",groupName:"P",caption:`⚰️@${d.split("@")[0]} 💀`,jpegThumbnail:await miniThumb(await getBuffer(i))}}}}),setTimeout(()=>{setTimeout(()=>{t.groupParticipantsUpdate(a.chat,[d],"remove").catch(e=>{a.reply(MultiNK.Error1())})},1e3),t.sendMessage(a.chat,{text:"Press [F]",mentions:[d]},{ephemeralExpiration:86400,quoted:{key:{participant:"0@s.whatsapp.net",remoteJid:"0@s.whatsapp.net"},message:{groupInviteMessage:{groupJid:"51995386439-1616169743@g.us",inviteCode:"m",groupName:"P",caption:`C come una manzana* :v🍎`,jpegThumbnail:e.readFileSync("./multimedia/imagenes/press-f.jpg")}}}})},l)}catch{a.reply("No se pudo usar el DeathNote...")}};handler.help=["deathnote"],handler.tags=["games"],handler.command=/^(deathnote)$/i,handler.group=!0,handler.admin=!0,handler.botAdmin=!0;export default handler;
+import fs from"fs";let handler=async(e,{conn:a,text:t,participants:n,command:r})=>{if(!t)return e.reply(`*[ ! ] Agrege una razon para la ejecución*\nEjemplo: \n\n${Prefijo+r} Hoy muere un random :v\n`);if(t.length<9)return e.reply("*[ ! ] La razon es muy corta*");const i=await a.profilePictureUrl(e.sender,"image").catch((e=>"./multimedia/imagenes/avatar_contact.png"));try{var s=[];n.map((async e=>{s.push(e.id.replace("c.us","s.whatsapp.net"))}));const r=1e4,o=s[Math.floor(Math.random()*s.length)];if(o.startsWith(a.user.id.split(":")[0]))return e.reply("Hoy no muere nadie :D");a.sendMessage(e.chat,{text:`*[ Death Note ]* 📓\n\n┏━⊱ *Seleccinado:* @${o.split("@")[0]}\n┗⊱ *Razón de su ejecucion:* \n${t}\n\n_Tiene ${r%6e4/1e3} segundos para decir sus últimas palabras_\n`,mentions:[o]},{ephemeralExpiration:86400,quoted:{key:{participant:"0@s.whatsapp.net",remoteJid:"0@s.whatsapp.net"},message:{groupInviteMessage:{groupJid:"51995386439-1616169743@g.us",inviteCode:"m",groupName:"P",caption:`⚰️@${o.split("@")[0]} 💀`,jpegThumbnail:await miniThumb(await getBuffer(i))}}}}),setTimeout((()=>{setTimeout((()=>{a.groupParticipantsUpdate(e.chat,[o],"remove").catch((a=>{e.reply(MultiNK.Error1())}))}),1e3),a.sendMessage(e.chat,{text:"Press [F]",mentions:[o]},{ephemeralExpiration:86400,quoted:{key:{participant:"0@s.whatsapp.net",remoteJid:"0@s.whatsapp.net"},message:{groupInviteMessage:{groupJid:"51995386439-1616169743@g.us",inviteCode:"m",groupName:"P",caption:"C come una manzana* :v🍎",jpegThumbnail:fs.readFileSync("./multimedia/imagenes/press-f.jpg")}}}})}),r)}catch{e.reply("No se pudo usar el DeathNote...")}};handler.help=["deathnote"],handler.tags=["games"],handler.command=/^deathnote$/i,handler.group=!0,handler.admin=!0,handler.botAdmin=!0;export default handler;
 
 /**
 [_>] https://github.com/NeKosmic/
