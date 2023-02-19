@@ -3,13 +3,7 @@
 </> Recode simple by @NeKosmic
 **/
 
-import e from"../lib/database.js";let{downloadContentFromMessage:a}=await import("@adiwajshing/baileys");export async function before(t,{isAdmin:i,isBotAdmin:s}){let n=e.data.chats[t.chat];if(!/^[.~#/\$,](read)?viewonce/.test(t.text)&&n.antiviewonce&&!n.isBanned&&"viewOnceMessage"==t.mtype){let r=t.message.viewOnceMessage.message,o=Object.keys(r)[0],c=await a(r[o],"imageMessage"==o?"image":"video"),m=Buffer.from([]);for await(let d of c)m=Buffer.concat([m,d]);if(/video/.test(o))return this.sendFile(t.chat,m,"error.mp4",`${r[o].caption}
-
-*Mensaje multimedia para verse una sola vez, recuperado ✓*
-`,t);if(/image/.test(o))return this.sendFile(t.chat,m,"error.jpg",`${r[o].caption}
-
-*Mensaje multimedia para verse una sola vez, recuperado ✓*
-`,t)}}
+import db from"../lib/database.js";let{downloadContentFromMessage}=(await import("@adiwajshing/baileys"));export async function before(e,{isAdmin:a,isBotAdmin:t}){const n=db.data.chats[e.chat];if(!/^[.~#/\$,](read)?viewonce/.test(e.text)&&n.antiviewonce&&!n.isBanned&&"viewOnceMessage"==e.mtype){const a=e.message.viewOnceMessage.message,t=Object.keys(a)[0],n=await downloadContentFromMessage(a[t],"imageMessage"==t?"image":"video");let s=Buffer.from([]);for await(const e of n)s=Buffer.concat([s,e]);if(/video/.test(t))return this.sendFile(e.chat,s,"error.mp4",`${a[t].caption}\n\n*Mensaje multimedia para verse una sola vez, recuperado ✓*\n`,e);if(/image/.test(t))return this.sendFile(e.chat,s,"error.jpg",`${a[t].caption}\n\n*Mensaje multimedia para verse una sola vez, recuperado ✓*\n`,e)}}
 
 /**
 [_>] https://github.com/NeKosmic/
