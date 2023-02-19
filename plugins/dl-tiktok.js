@@ -3,12 +3,7 @@
 </> Recode simple by @NeKosmic
 **/
 
-import{tiktokdl as r,tiktokdlv2 as t}from"@bochilteam/scraper";let handler=async(e,{conn:a,args:i,command:n})=>{if(!i[0])return e.reply("*[ ! ] Y el Link?*");if(!isUrl(i[0])||!i[0].includes("tiktok.com"))return e.reply(`*[ ! ] Link inv\xe1lido*
-_Por favor, use un link de Tik Tok_
-Ejm : ${Prefijo+n} https://vm.tiktok.com/ZMNo7NFT9/`);let l;await e.reply(MultiNK.Proces(await a.getName(e.sender)));try{let{author:{nickname:o},video:k,description:m}=await r(i[0]).catch(async r=>await t(i[0])),c=k.no_watermark_raw||k.no_watermark||k.no_watermark_hd||k.with_watermark;if(!c)return e.reply(MultiNK.Error1());a.sendFile(e.chat,c,"tiktok.mp4",`
-🔥 By ${o}${m?`
-📜*Descripci\xf3n:* ${m}`:""}
-`.trim(),e)}catch{e.reply(MultiNK.Error0())}};handler.help=["tiktokdl"].map(r=>r+" <link>"),handler.tags=["servicio"],handler.command=/^(tiktokdl)$/i,handler.limit=!0;export default handler;
+import{tiktokdl,tiktokdlv2}from"@bochilteam/scraper";let handler=async(t,{conn:r,args:i,command:e})=>{if(!i[0])return t.reply("*[ ! ] Y el Link?*");if(!isUrl(i[0]))return t.reply(`*[ ! ] Link inválido*\n_Por favor, use un link de Tik Tok_\nEjm : ${Prefijo+e} https://vm.tiktok.com/ZMNo7NFT9/`);if(!i[0].includes("tiktok.com"))return t.reply(`*[ ! ] Link inválido*\n_Por favor, use un link de Tik Tok_\nEjm : ${Prefijo+e} https://vm.tiktok.com/ZMNo7NFT9/`);const n=await r.getName(t.sender),o=t.reply(MultiNK.Proces(n));await o;try{const{author:{nickname:e},video:n,description:o}=await tiktokdl(i[0]).catch((async t=>await tiktokdlv2(i[0]))),a=n.no_watermark_raw||n.no_watermark||n.no_watermark_hd||n.with_watermark;if(!a)return t.reply(MultiNK.Error1());r.sendFile(t.chat,a,"tiktok.mp4",`\n🔥 By ${e}${o?`\n📜*Descripción:* ${o}`:""}\n`.trim(),t)}catch{t.reply(MultiNK.Error0())}};handler.help=["tiktokdl <link>"],handler.tags=["servicio"],handler.command=/^tiktokdl$/i,handler.limit=!0;export default handler;
 
 /**
 [_>] https://github.com/NeKosmic/
