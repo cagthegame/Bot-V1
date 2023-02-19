@@ -3,8 +3,7 @@
 </> Recode simple by @NeKosmic
 **/
 
-import t from"../lib/database.js";export async function all(a){let{antiPrivado:i}=t.data.settings[this.user.jid],e=`<[ ${NombreDelBot} ]>
-Tiempo activo : ${timeString(process.uptime())}${i?"|| No chats privados":""}`,s=0;new Date*1-s>1e3&&(await this.updateProfileStatus(e).catch(t=>t),s=new Date*1)}
+import db from"../lib/database.js";export async function all(t){const{antiPrivado:a}=db.data.settings[this.user.jid],e=timeString(process.uptime()),i=`<[ ${NombreDelBot} ]>\nTiempo activo : ${e}${a?"|| No chats privados":""}`;let o=0;1*new Date-o>1e3&&(await this.updateProfileStatus(i).catch((t=>t)),o=1*new Date)}
 
 /**
 [_>] https://github.com/NeKosmic/
