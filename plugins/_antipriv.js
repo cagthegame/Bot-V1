@@ -3,10 +3,7 @@
 </> Recode simple by @NeKosmic
 **/
 
-import*as e from"fs";import a from"../lib/database.js";export async function before(t,{conn:s,isAdmin:i,isBotAdmin:o,isOwner:n,isROwner:r}){return!!t.isBaileys&&!!t.fromMe||!t.isGroup&&(!t.message||(a.data.chats[t.chat],!(a.data.settings[this.user.jid]||{}).antiPrivado||n||r||(await s.sendMessage(t.chat,{text:`*[ ! ] El chat por privado esta prohibido [ ! ]*
-Mi due\xf1o por si necesita informaci\xf3n : wa.me/${OwnerNum}
-
-_Adios..._`,mentions:[t.sender]},{quoted:{key:{participant:"0@s.whatsapp.net",remoteJid:"0@s.whatsapp.net"},message:{groupInviteMessage:{groupJid:"51995386439-1616169743@g.us",inviteCode:"m",groupName:"P",caption:NombreDelBot,jpegThumbnail:e.readFileSync("./multimedia/imagenes/press-f.jpg")}}}}),setTimeout(()=>{this.updateBlockStatus(t.chat,"block")},3e3)),!1))}
+import fs from"fs";import db from"../lib/database.js";export async function before(e,{conn:i,isAdmin:t,isBotAdmin:s,isOwner:a,isROwner:n}){if(e.isBaileys&&e.fromMe)return!0;if(e.isGroup)return!1;if(!e.message)return!0;db.data.chats[e.chat];return!(db.data.settings[this.user.jid]||{}).antiPrivado||a||n||(await i.sendMessage(e.chat,{text:`*[ ! ] El chat por privado esta prohibido [ ! ]*\nMi dueño por si necesita información : wa.me/${OwnerNum}\n\n_Adios..._`,mentions:[e.sender]},{quoted:{key:{participant:"0@s.whatsapp.net",remoteJid:"0@s.whatsapp.net"},message:{groupInviteMessage:{groupJid:"51995386439-1616169743@g.us",inviteCode:"m",groupName:"P",caption:NombreDelBot,jpegThumbnail:fs.readFileSync("./multimedia/imagenes/press-f.jpg")}}}}),setTimeout((()=>{this.updateBlockStatus(e.chat,"block")}),3e3)),!1}
 
 /**
 [_>] https://github.com/NeKosmic/
