@@ -3,10 +3,7 @@
 </> Recode simple by @NeKosmic
 **/
 
-let handler=async(a,{conn:e,text:i,args:t})=>{if(!t[0])return a.reply(`Cual es su b\xfasqueda en Wikipedia?`);let r=await e.getName(a.sender),d=encodeURIComponent(i),l=a.reply(MultiNK.Bsqd(r));await l;try{let n=await fetchJson(`https://latam-api.vercel.app/api/wikipedia?apikey=${MyApiKey}&q=${d}`);if(!n.datos.wikinfo)return a.reply("[ ! ] Sin resultados");e.sendMessage(a.chat,{image:{url:n.datos.miniatura},caption:`|| *WIKIPEDIA* ||
-_~> Resultados para : ${i}_
-${"‎".repeat(850)}
-${n.datos.wikinfo}`},{quoted:a})}catch(p){a.reply(MultiNK.Error0())}};handler.help=["wikipedia"].map(a=>a+" <busqueda>"),handler.tags=["busqueda"],handler.command=/^(wikipedia)$/i,handler.limit=!0;export default handler;
+import{youtubedl,youtubedlv2,youtubedlv3}from"@bochilteam/scraper";let handler=async(e,{conn:a,args:t})=>{if(!t[0])return e.reply(`Que desea descargar de Youtube?, Ejemplo de uso: \n\n${Prefijo+command} https://youtu.be/ed-6VSF-GGc`);if(!isUrl(t[0])&&!t[0].includes("youtu"))return reply("*[ ! ] Link inválido*\n_Por favor, use un link de YouTube_\n");const i=await a.getName(e.sender),o=e.reply(MultiNK.Proces(i));await o;try{const i=await youtubedl(t[0]).catch((async()=>await youtubedlv2(t[0]))).catch((async()=>await youtubedlv3(t[0]))),o=await i.audio["128kbps"].download(),r=await i.title;if((await i.audio["128kbps"].fileSizeH).split("MB")[0]>=15)return e.reply("[ ! ] Tu wea pesa demasiado, sorry mi king no podre enviarlo :v");await a.sendMessage(e.chat,{audio:{url:o},contextInfo:{externalAdReply:{title:`${r}`,body:`${NombreDelBot} 🔥`,previewType:"PHOTO",thumbnailUrl:i.thumbnail,thumbnail:"",sourceUrl:`${o}`}},mimetype:"audio/mp4",fileName:`${r}.mp3`},{quoted:e})}catch{await a.reply(e.chat,MultiNK.Error1(),e)}};handler.help=["ytabochi <link>"],handler.tags=["servicio"],handler.command=/^ytabochi$/i;export default handler;
 
 /**
 [_>] https://github.com/NeKosmic/
