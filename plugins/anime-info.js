@@ -3,30 +3,7 @@
 </> Recode simple by @NeKosmic
 **/
 
-let handler=async(a,{conn:e,text:i,command:r})=>{if(!i)return a.reply(`Que anime desea buscar?, ejemplo de uso:
-
-${Prefijo+r} nichijou
-`);let t;await a.reply(MultiNK.Bsqd(await e.getName(a.sender)));let o=encodeURIComponent(i);try{let n=(await fetchJson(`https://api.jikan.moe/v4/anime?q=${o}`)).data[0],s=n.images.jpg.image_url?n.images.webp.image_url:n.images.jpg.large_image_url?n.images.webp.large_image_url:"https://drive.google.com/uc?export=download&id=1XUu0nNH12JI-iyGOQdPRkHsgtp3DO0eu",l=`[ ${n.title} - Comun ], [ ${n.title_english} - Ingles ], [ ${n.title_japanese} - Japon\xe9s ]`;try{var d=`*🔥 Productora:* ${n.producers[0].name||"-"}
-*🪀 Licenciado por:* ${n.licensors[0].name||"-"}
-*🌟 Estudio:* ${n.studios[0].name||"-"}`}catch{var d=""}try{var u=`*📺 Trailer:* ${n.trailer.url||"Url no encontrado!"}`}catch{var u=""}await e.sendMessage(a.chat,{image:{url:s},caption:`
-${"*\uD83E\uDDEC ID:* "+n.mal_id}
-${"*✍️ T\xedtulos:* "+l}
-${"*\uD83E\uDE84 Tipo:* "+n.type}
-${"*\uD83E\uDDE9 Genero:* "+n.source}
-${"*\uD83D\uDDC3️ Episodio:* "+n.episodes}
-${"*\uD83C\uDFAD Estado:* "+await traducIr(encodeURI(n.status))}
-${"*⌚ Duraci\xf3n:* "+await traducIr(encodeURI(n.duration))}
-${"*♻️ Clasificaci\xf3n:* "+await traducIr(encodeURI(n.rating))}
-${"*\uD83D\uDCC8 Puntaje:* "+n.score}
-${"*\uD83D\uDC4D Calificado por:* "+n.scored_by}
-${"*\uD83D\uDD16 Rango:* "+n.rank}
-${"*⚡ Popularidad:* "+n.popularity}
-${"*\uD83D\uDC65 Miembros:* "+n.members}
-${"*❤️ Favoritos:* "+n.favorites}
-${"*\uD83D\uDCDC Sinopsis:* "+await traducIr(encodeURI(n.synopsis))}
-${d}
-${u}
-`.trim()},{quoted:a})}catch(p){a.reply(MultiNK.Error0())}};handler.help=["infoanime"],handler.tags=["animeuwu"],handler.command=/^(infoanime)$/i;export default handler;
+let handler=async(e,{conn:a,text:n,command:i})=>{if(!n)return e.reply(`Que anime desea buscar?, ejemplo de uso:\n\n${Prefijo+i} nichijou\n`);const r=await a.getName(e.sender),o=e.reply(MultiNK.Bsqd(r));await o;const t=encodeURIComponent(n);try{const n=(await fetchJson(`https://api.jikan.moe/v4/anime?q=${t}`)).data[0],i=n.images.jpg.image_url?n.images.webp.image_url:n.images.jpg.large_image_url?n.images.webp.large_image_url:"https://drive.google.com/uc?export=download&id=1XUu0nNH12JI-iyGOQdPRkHsgtp3DO0eu",r=`[ ${n.title} - Comun ], [ ${n.title_english} - Ingles ], [ ${n.title_japanese} - Japonés ]`;try{var s=`*🔥 Productora:* ${n.producers[0].name||"-"}\n*🪀 Licenciado por:* ${n.licensors[0].name||"-"}\n*🌟 Estudio:* ${n.studios[0].name||"-"}`}catch{s=""}try{var d=`*📺 Trailer:* ${n.trailer.url||"Url no encontrado!"}`}catch{d=""}await a.sendMessage(e.chat,{image:{url:i},caption:`\n*🧬 ID:* ${n.mal_id}\n*✍️ Títulos:* ${r}\n*🪄 Tipo:* ${n.type}\n*🧩 Genero:* ${n.source}\n*🗃️ Episodio:* ${n.episodes}\n*🎭 Estado:* ${await traducIr(encodeURI(n.status))}\n*⌚ Duración:* ${await traducIr(encodeURI(n.duration))}\n*♻️ Clasificación:* ${await traducIr(encodeURI(n.rating))}\n*📈 Puntaje:* ${n.score}\n*👍 Calificado por:* ${n.scored_by}\n*🔖 Rango:* ${n.rank}\n*⚡ Popularidad:* ${n.popularity}\n*👥 Miembros:* ${n.members}\n*❤️ Favoritos:* ${n.favorites}\n*📜 Sinopsis:* ${await traducIr(encodeURI(n.synopsis))}\n${s}\n${d}\n`.trim()},{quoted:e})}catch(a){e.reply(MultiNK.Error0())}};handler.help=["infoanime"],handler.tags=["animeuwu"],handler.command=/^infoanime$/i;export default handler;
 
 /**
 [_>] https://github.com/NeKosmic/
