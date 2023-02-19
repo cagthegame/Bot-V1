@@ -3,9 +3,7 @@
 </> Recode simple by @NeKosmic
 **/
 
-import e from"../lib/database.js";let handler=e=>e;export async function all(a){let m=e.data.users[a.sender];!a.chat.endsWith("broadcast")&&0!=m.premiumTime&&m.premium&&new Date*1>=m.premiumTime&&(await a.reply(`[ ! ] Se acab\xf3 tu tiempo premium!
-_ Espero que lo hayas disfrutado :3_
-`),m.premiumTime=0,m.premium=!1)}
+import db from"../lib/database.js";let handler=e=>e;export async function all(e){const a=db.data.users[e.sender];e.chat.endsWith("broadcast")||0!=a.premiumTime&&a.premium&&1*new Date>=a.premiumTime&&(await e.reply("[ ! ] Se acabó tu tiempo premium!\n_ Espero que lo hayas disfrutado :3_\n"),a.premiumTime=0,a.premium=!1)}
 
 /**
 [_>] https://github.com/NeKosmic/
