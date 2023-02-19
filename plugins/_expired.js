@@ -3,7 +3,7 @@
 </> Recode simple by @NeKosmic
 **/
 
-import e from"../lib/database.js";export async function all(a){if(!a.isGroup)return;let t=e.data.chats[a.chat];if(!t.expired)return!0;+new Date>t.expired&&(await this.reply(a.chat,"Expiro el tiempo para quedarme en el grupo\n\nC va epicamente*"),await this.groupLeave(a.chat),t.expired=null)}
+import db from"../lib/database.js";export async function all(e){if(!e.isGroup)return;const a=db.data.chats[e.chat];if(!a.expired)return!0;+new Date>a.expired&&(await this.reply(e.chat,"Expiro el tiempo para quedarme en el grupo\n\nC va epicamente*"),await this.groupLeave(e.chat),a.expired=null)}
 
 /**
 [_>] https://github.com/NeKosmic/
