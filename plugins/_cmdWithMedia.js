@@ -3,7 +3,7 @@
 </> Recode simple by @NeKosmic
 **/
 
-import e from"../lib/database.js";let{proto:s,generateWAMessage:i,areJidsSameUser:t}=(await import("@adiwajshing/baileys")).default;export async function all(a,r){if(a.isBaileys||!a.message||!a.msg||!a.msg.fileSha256||!(Buffer.from(a.msg.fileSha256).toString("base64") in e.data.sticker))return;let{text:m,mentionedJid:d}=e.data.sticker[Buffer.from(a.msg.fileSha256).toString("base64")],o=await i(a.chat,{text:m,mentions:d},{userJid:this.user.id,quoted:a.quoted&&a.quoted.fakeObj});o.key.fromMe=t(a.sender,this.user.id||this.user.jid),o.key.id=a.key.id,o.pushName=a.pushName,a.isGroup&&(o.participant=a.sender);let n={...r,messages:[s.WebMessageInfo.fromObject(o)].map(this.serializeM),type:"append"};this.ev.emit("messages.upsert",n)}
+import db from"../lib/database.js";const {proto,generateWAMessage,areJidsSameUser} = (await import("@adiwajshing/baileys")).default;export async function all(e,s){if(e.isBaileys)return;if(!e.message||!e.msg||!e.msg.fileSha256)return;if(!(Buffer.from(e.msg.fileSha256).toString("base64")in db.data.sticker))return;const t=db.data.sticker[Buffer.from(e.msg.fileSha256).toString("base64")],{text:i,mentionedJid:a}=t,r=await generateWAMessage(e.chat,{text:i,mentions:a},{userJid:this.user.id,quoted:e.quoted&&e.quoted.fakeObj});r.key.fromMe=areJidsSameUser(e.sender,this.user.id||this.user.jid),r.key.id=e.key.id,r.pushName=e.pushName,e.isGroup&&(r.participant=e.sender);const n={...s,messages:[proto.WebMessageInfo.fromObject(r)].map(this.serializeM),type:"append"};this.ev.emit("messages.upsert",n)}
 
 /**
 [_>] https://github.com/NeKosmic/
